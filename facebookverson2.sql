@@ -43,7 +43,7 @@ INSERT INTO `comments` (`comment_id`, `comment`, `comment_date`, `post_id`, `use
 (1, 'Happy birthday teacher!!!!', '2022-03-15 15:15:06', 1, 2),
 (2, 'Happy birthday teacher. I wish you all the best!!!', '2022-03-15 15:15:06', 1, 3),
 (3, 'Thanks for you advice', '2022-03-15 15:16:46', 3, 1),
-(4, 'That\'s seems fantastic!!!', '2022-03-15 15:16:46', 5, 2),
+(4, 'Thats seems fantastic!!!', '2022-03-15 15:16:46', 5, 2),
 (5, 'Congratulations!!!!', '2022-03-15 15:18:00', 2, 3),
 (6, 'What happen my friend?', '2022-03-15 15:18:00', 4, 2);
 
