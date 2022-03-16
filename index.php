@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 <?php
 require_once('templates/header.php');
-// require_once('controllers/view_post.php');
 require_once('models/post.php');
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,10 +27,10 @@ foreach ($items as $item):
    <div class="body">
        <p class="p-4 pt-0 text-gray-600"><?= $item['post_description'] ?></p>
        <?php  
-            if($item['image']!=null){
+            if($item['post_image']!=null){
        ?>
         <div class="aspect-w-4 aspect-h-5 sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
-            <img src="<?= $item['image'] ?>" alt="" class="w-full h-full object-center object-cover">
+            <img src="<?= $item['post_image'] ?>" alt="" class="w-full h-full object-center object-cover">
         </div>
         <?php 
             }
@@ -58,5 +56,3 @@ foreach ($items as $item):
 <?php 
 endforeach;
 ?>
-=======
->>>>>>> fa09294a5f45c85ae3b82b2d09203639ac73c9a8
