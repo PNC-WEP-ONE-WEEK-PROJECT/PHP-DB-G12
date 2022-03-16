@@ -28,7 +28,7 @@
             <a href="#"><img src="../images/icon/friends.svg" alt="friend"></a>
         </div>
         <div class="self-center flex w-1/3 justify-end mr-5">
-            <a href="#"><img class="rounded-full hover:border-4 border-blue-400 text-cyan-500" src="../images/rady.jpg" alt="home" width="50px"></a>
+            <a href="#"><img class="rounded-full hover:border-4 border-blue-400 text-cyan-500" src="../images/teacher.jpg" alt="home" width="50px"></a>
         </div>
     </div>
   </nav>
