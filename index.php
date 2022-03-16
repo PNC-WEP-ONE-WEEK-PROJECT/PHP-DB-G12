@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 require_once('templates/header.php');
 // require_once('controllers/view_post.php');
@@ -57,3 +58,5 @@ foreach ($items as $item):
 <?php 
 endforeach;
 ?>
+=======
+>>>>>>> fa09294a5f45c85ae3b82b2d09203639ac73c9a8
