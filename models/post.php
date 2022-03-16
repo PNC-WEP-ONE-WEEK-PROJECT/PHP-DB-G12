@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 // database 
 require_once("database.php");
@@ -13,5 +12,3 @@ function getItems()
     $items = $statement->fetchAll();
     return $items;
 }
-=======
->>>>>>> fa09294a5f45c85ae3b82b2d09203639ac73c9a8
