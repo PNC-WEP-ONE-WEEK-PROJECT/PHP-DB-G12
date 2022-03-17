@@ -1,9 +1,8 @@
 <?php
-require_once("../views/edit_view.php");
-require_once('../models/item.php');
+require_once('../models/post.php');
 
-$id = $_POST['itemId'];
-$item_name = $_POST['item'];
-$price = $_POST['price'];
+$id = $_POST['id'];
+$post_description = $_POST['post_description'];
+$post_image = $_POST['image'];
 updatePost($id,$post_description, $post_image);
 header('location: /index.php');
