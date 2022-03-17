@@ -96,7 +96,7 @@ INSERT INTO `posts` (`post_id`, `title`, `post_description`, `image`, `post_date
 (2, 'Wedding', 'Today is your happy day. I hope you are happy with your new family and love each other for a very long time.', 'images/cute_girl.jpg', '2022-03-15 14:43:31', 2),
 (3, 'Experience', 'I want to share some experience that you need to continue to catch your dream no matter what happens.', NULL, '2022-03-15 14:55:07', 2),
 (4, 'Feelings', 'Today I am very sad. :(', NULL, '2022-03-15 14:55:07', 3),
-(5, 'Party', 'The party last night was very awesome and I like it very much.', 'images/party/jpg', '2022-03-15 15:10:29', 1);
+(5, 'Party', 'The party last night was very awesome and I like it very much.', 'images/party.jpg', '2022-03-15 15:10:29', 1);
 
 -- --------------------------------------------------------
 
