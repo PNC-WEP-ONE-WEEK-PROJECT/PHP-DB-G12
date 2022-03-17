@@ -26,8 +26,26 @@ window.onclick = function(event) {
 
 function deleteImg(event){
     if(event.target.id = "delete"){
-        event.target.parentNode.remove();
+        swal({
+            title: "Are you sure?",
+            text: "Do you really want to delete this photo?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              swal("Your image has been deleted successfully!!", {
+                icon: "success",
+              });
+            event.target.parentElement.remove();
+            } else {
+              swal("Nothing deleted!");
+            }
+          });
     }
 }
 let deleteImage = document.getElementById("delete");
-deleteImage.addEventListener("click", deleteImg);
+if(deleteImage != null){
+    deleteImage.addEventListener("click", deleteImg);
+}

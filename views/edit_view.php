@@ -9,9 +9,9 @@ require_once("../models/post.php");
     <?php
         // Get the id of the post needed to update
         $id=$_GET['id'];
-        echo $id;
         // Get data from the database of the post
         $item = getPostById($id);
+        if($item != null){
     ?>
     <form action="/controllers/edit_post.php" method="post" class="space-y-3">
         <h2 class="text-3xl font-bold mb-4 text-purple-800 text-center">Edit your post here!!!!</h2>
@@ -40,5 +40,11 @@ require_once("../models/post.php");
             <button class="block w-full bg-blue-400 p-3 mt-3 rounded text-gray-700 font-bold text-lg" type="submit">Change</button>
         </div>
     </form>
+    <?php
+        } else {
+            header('location: /index.php');
+        }
+    ?>
 </div>
 <script src="../js/main.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
