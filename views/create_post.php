@@ -20,12 +20,7 @@ require_once('../models/create.php');
         </div>
         <hr class="border-gray-400"><br>
         <button class="w-full bg-gray-300 p-3 text-gray-600 font-bold rounded-md" type="submit" name="submit">Post</button>
-        <script>
-        var loadFile = function(event) {
-            var image = document.getElementById('output');
-            image.src = URL.createObjectURL(event.target.files[0]);
-        };
-        </script>
+
     </form>
 </div>
 
