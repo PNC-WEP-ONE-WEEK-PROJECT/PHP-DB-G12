@@ -1,6 +1,5 @@
 <?php
 require_once('templates/header.php');
-// require_once('controllers/view_post.php');
 require_once('models/post.php');
 ?>
 
@@ -41,6 +40,7 @@ foreach ($items as $item):
                     <i onclick="" class="control-post fa fa-ellipsis-h cursor-pointer text-blue-400" style="font-size:25px"></i>
                     <div style="display: none;" class="post-control origin-top-right absolute right-0 mt-2 w-36 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                         <a href="controllers/view_post.php?id=<?= $item['post_id']?>" class="hover:text-blue-400 text-center block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">
+                        <a href="/views/edit_view.php?id=<?php echo $item['post_id'] ?>" class="hover:text-blue-400 text-center block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">
                             <i class="fa fa-edit" style="font-size:25px"></i>
                             Edit Post
                         </a>
