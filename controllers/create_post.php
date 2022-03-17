@@ -22,6 +22,5 @@ move_uploaded_file($image,'../images/'. $new_img_name);
 // INSERT ALL DATAS INTO POSTS TABLE
 createPost($title,$post_description,$new_img_name,$post_date,$user_id);
 
-
 header('location: /index.php');
 

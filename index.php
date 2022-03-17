@@ -2,26 +2,12 @@
 <?php
 require_once('templates/header.php');
 require_once('models/post.php');
+require_once('models/comment.php');
 ?>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
-<!-- Alert message  -->
-<!-- <div id="alert-3" class="mt-5 max-w-xl mx-96 flex p-4 mb-4 bg-green-100 rounded-lg dark:bg-green-200" role="alert">
-    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle w-5 h-5 mx-2">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-        <polyline points="22 4 12 14.01 9 11.01"></polyline>
-    </svg>
-  <div class="ml-3 text-sm font-medium text-green-700 dark:text-green-800">
-    <strong>Success!</strong> You deleted post 
-  </div>
-  <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-green-100 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex h-8 w-8 dark:bg-green-200 dark:text-green-600 dark:hover:bg-green-300" onclick="this.parentElement.style.display='none';">
-    <span class="sr-only">Close</span>
-    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-  </button>
-</div> -->
 <!-- Get all data from database and display it -->
 <?php 
 $items = getItems();
@@ -85,6 +71,21 @@ foreach ($items as $item):
                 <i class="fa fa-commenting-o pr-2" style="font-size:30px"></i>
                 Comment
            </button>
+       </div>
+   </div>
+   <div>
+       <div class="flex justify-center align-middle">
+            <img class="object-cover h-10 w-10 rounded-full ml-4 mt-1.5" src="images/teacher.jpg" alt="" width="">
+            <input type="text" placeholder="Add a comment" name="post_comment" class="w-3/4 p-3 rounded-md mb-4 ml-2 border-2">
+            <button type="submit" name="comment" class="p-3 rounded-md mb-4 mx-2 border-2 font-bold bg-blue-300" >Post</button>
+       </div>
+       <div>
+            <?php
+                $post_id = $items['post_id'];
+                $comments=getCommentsByPostId($post_id);
+                if($comments != null)
+            ?>
+            
        </div>
    </div>
 </div>
