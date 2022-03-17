@@ -24,11 +24,17 @@
             <!-- <input type="text" name="search-friend" id="search" class="focus:ring-indigo-500 focus:border-indigo-500 block w-60 pl-9 pr-7 sm:text-sm border-gray-300 rounded-full p-2 border-2" placeholder="Search Facebook"> -->
         </div>
         <div class="self-center flex items-center justify-center space-x-20 w-1/3">
-            <a href="#" class=""><img src="../images/icon/home.svg" alt="home"></a>
-            <a href="#"><img src="../images/icon/friends.svg" alt="friend"></a>
+            <a href="#" class="flex items-center w-12 h-12 hover:bg-blue-400 focus:bg-blue-500 p-3 rounded-full"><img class="fill-blue-500" src="../images/icon/home.svg" alt="home"></a>
+            <a href="#" class="flex items-center w-12 h-12 hover:bg-blue-400 focus:bg-blue-500 p-3 rounded-full"><img src="../images/icon/friends.svg" alt="friend"></a>
         </div>
+        <!-- <div class="self-center flex w-1/3 justify-end mr-5">
+            <a href="#"><img class="rounded-full hover:border-2 border-blue-400 text-cyan-500" src="../images/teacher.jpg" alt="home" width="50px"></a>
+        </div> -->
         <div class="self-center flex w-1/3 justify-end mr-5">
-            <a href="#"><img class="rounded-full hover:border-4 border-blue-400 text-cyan-500" src="../images/teacher.jpg" alt="home" width="50px"></a>
+            <button type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-400 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <span class="sr-only">Open user menu</span>
+                <img class="h-10 w-10 rounded-full" src="../images/teacher.jpg" alt="user" width="50px">
+            </button>
         </div>
     </div>
   </nav>
