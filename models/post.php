@@ -10,7 +10,7 @@ require_once("database.php");
 function getItems()
 {
     global $db;
-    $statement = $db->query("SELECT * FROM users_post WHERE post_id IS NOT NULL;");
+    $statement = $db->query("SELECT * FROM users_post WHERE post_id IS NOT NULL ORDER BY post_id DESC;");
     $items = $statement->fetchAll();
     return $items;
 }

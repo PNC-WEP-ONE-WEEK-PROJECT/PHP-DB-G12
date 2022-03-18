@@ -25,15 +25,17 @@
             </label>
         </div>
         <div class="self-center flex items-center justify-center space-x-20 w-1/3">
-            <a href="#" class="text-center w-14 h-14 hover:bg-blue-400 focus:bg-blue-500 focus:text-blue-50 p-3 rounded-full"><i class="fa fa-home" style="font-size:30px"></i></a>
+            <a href="#" class="text-center w-14 h-14 hover:bg-blue-400 bg-blue-500 text-blue-50 focus:text-blue-50 p-3 rounded-full"><i class="fa fa-home" style="font-size:30px"></i></a>
             <a href="#" class="text-center w-14 h-14 hover:bg-blue-400 focus:bg-blue-500 focus:text-blue-50 p-3 rounded-full"><i class="mt-1 fa fa-users" style="font-size:25px"></i></a>
         </div>
         <div class="self-center flex w-1/3 justify-end mr-5">
             <div x-data="{ dropdownOpen: false }" class="relative">
-                <button @click="dropdownOpen = ! dropdownOpen"
-                    class="relative block h-10 w-10 rounded-full overflow-hidden shadow focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-400 focus:ring-white">
-                    <img class="h-full w-full object-cover" src="../images/teacher.jpg" alt="Your avatar">
-                </button>
+                <div @click="dropdownOpen = ! dropdownOpen" class="rounded-full pr-1 cursor-pointer flex items-center hover:bg-slate-200 duration-150 p-1 focus:bg-slate-200">
+                    <button class="relative block h-10 w-10 rounded-full overflow-hidden shadow">
+                        <img class="h-full w-full object-cover" src="../images/teacher.jpg" alt="Your avatar">
+                    </button>
+                    <p class="ml-2 text-base font-bold text-slate-700">Rady Y</p>
+                </div>
             
                 <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"
                     style="display: none;"></div>
