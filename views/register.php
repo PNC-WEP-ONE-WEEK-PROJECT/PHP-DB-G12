@@ -1,37 +1,38 @@
 <?php 
     require_once('../templates/header.php');
 ?>
-<div class="max-w-md m-auto bg-gray-200 p-6 mt-6 rounded-md pt-6 pb-10 mb-6 text-center">
+<div class="max-w-md m-auto bg-gray-200 p-6 mt-28 rounded-md pt-6 pb-10 mb-6 text-center">
     <h1 class="text-blue-500 text-center font-bold text-3xl">Sign Up</h1>
-    <form action="" method="post" class="mt-6">
+    <form action="../controllers/create_acc.php" method="post" class="mt-6">
         <div class="flex m-auto mb-4">
-            <input type="text" placeholder="First name" class="w-full p-2 outline-none border-2">
-            <input type="text" placeholder="Last name" class="w-full ml-4 p-2 outline-none border-2">
+            <input type="text" name="first-name" placeholder="First name" class="w-full p-2 outline-none border-2" required>
+            <input type="text" name="last-name" placeholder="Last name" class="w-full ml-4 p-2 outline-none border-2" required>
         </div>
-        <input type="email" placeholder="Email address" class="p-2 mb-4 w-full outline-none border-2"><br>
+        <input type="email" name="email" placeholder="Email address" class="p-2 mb-4 w-full outline-none border-2" required><br>
         <input type="tel" id="phone" name="phone" placeholder="Phone" class="p-2 mb-4 w-full outline-none border-2" required><br>
-        <input type="password" placeholder="Password" class="p-2 mb-4 w-full outline-none border-2"><br>
+        <input type="password" name="password" placeholder="Password" class="p-2 mb-4 w-full outline-none border-2" required><br>
 
         <div class="flex mb-4">
             <label for="" class="p-2">Birthday: </label>
-            <input type="date" class="ml-4 p-2 outline-none border-2"><br>
+            <input type="date" name="birthday" class="ml-4 p-2 outline-none border-2" required>
         </div>
 
         <div class="flex mb-4">
             <label for="" class="p-2">Gender:</label>
             <div class="ml-4 p-2">
-                <input type="radio" id="female" name="gender" value="Female">
+                <input type="radio" id="female" name="gender" value="Female" required>
                 <label for="female" class="ml-2">Female</label>
             </div>
             <div class="ml-4 p-2">
-                <input type="radio" id="male" name="gender" value="Male">
+                <input type="radio" id="male" name="gender" value="Male" required>
                 <label for="male" class="ml-2">Male</label><br>
             </div>
         </div>
 
         <div class="flex mb-4">
             <label for="country" class="p-2">Country: </label>      
-            <select id="country" name="country" class="form-control mb-2 ml-4 p-2 outline-none w-full border-2">
+            <select id="country" name="country" class="form-control mb-2 ml-4 p-2 outline-none w-full border-2" required>
+                <option value="" selected disabled >Select country</option>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
                 <option value="Albania">Albania</option>
@@ -278,7 +279,7 @@
                 <option value="Zimbabwe">Zimbabwe</option>
             </select>
         </div>    
-        <button type="submit" class="m-auto p-2 bg-green-600 rounded-md pl-16 pr-16 font-bold mt-3 text-white">Sign Up</button>
+        <button type="submit" name="submit" class="m-auto p-2 bg-green-600 rounded-md pl-16 pr-16 font-bold mt-3 text-white">Sign Up</button>
         <p class="text-blue-600"><a href="">Already have an account?</a></p>
     </form>
 </div>
