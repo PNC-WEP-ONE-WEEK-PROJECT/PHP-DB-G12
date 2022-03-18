@@ -1,10 +1,12 @@
 <?php
 require_once('../templates/header.php');
 require_once('../models/create.php');
+
+
 ?>
 
+<div class="bg-red-100 w-6/12 m-auto p-6 mt-10">
 
-<div class="bg-red-100 w-6/12 m-auto p-6">
     <form action="../controllers/create_post.php" method="post" enctype="multipart/form-data">
         <textarea class="w-full resize-none outline-none p-2" name="title" id="" rows="1" placeholder="Title..."></textarea>
         <textarea class="w-full resize-none outline-none p-2" name="post_description" id="" rows="2" placeholder="Descrition..."></textarea>
@@ -28,5 +30,6 @@ require_once('../models/create.php');
 
 
 <?php
+
 require_once('../templates/footer.php');
 ?>

@@ -28,8 +28,8 @@ $items = getItems();
 foreach ($items as $item):
 ?>
 
-<div class="mt-5 block max-w-xl mx-96 rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3">
-   <div class="header p-4 pb-0">
+<div class="mt-5 block max-w-xl m-auto  rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3">
+   <div class="header p-4 pb-0 ">
         <ul role="list" class="p-0 divide-y divide-slate-200">
             <li class="flex py-4 first:pt-0 last:pb-0">
                 <img class="object-cover h-14 w-14 rounded-full" src="<?= $item['profile'] ?>" alt="" width=""/>
@@ -61,10 +61,6 @@ foreach ($items as $item):
        ?>
         <div class="aspect-w-4 aspect-h-5 sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
             <img src="<?= 'images/' .$item['image'] ?>" alt="" class="w-full h-full object-center object-cover">
-
-            <?php echo $item['image']; 
-            
-            ?>
             
         </div>
         <?php 
