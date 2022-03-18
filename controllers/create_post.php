@@ -27,6 +27,5 @@ if(!empty($_FILES['filename']['tmp_name'])) {
 
 createPost($post_description,$new_img_name,$post_date,$user_id);
 
-
 header('location: /index.php');
 
