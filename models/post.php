@@ -10,7 +10,7 @@ require_once("database.php");
 function getItems()
 {
     global $db;
-    $statement = $db->query("SELECT * FROM users_post WHERE post_id IS NOT NULL;");
+    $statement = $db->query("SELECT * FROM users_post WHERE post_id IS NOT NULL ORDER BY post_id DESC;");
     $items = $statement->fetchAll();
     return $items;
 }
@@ -66,3 +66,25 @@ function updatePost($id, $post_description, $post_image)
     ]);
     return ($statement->rowCount() == 1);
 }
+
+
+function createAcc($first_name, $last_name, $phone, $email, $country, $date_of_birth, $gender, $password,$create_date)
+{
+    global $db;
+    $statement = $db->prepare("INSERT INTO users (first_name,last_name,phone,email,country,date_of_birth,gender,password,create_date) VALUES (:first_name, :last_name, :phone_number, :email_address, :country, :date_of_birth, :gender, :password, :create_date) ");
+    $statement->execute([
+        ':first_name'=> $first_name,
+        ':last_name'=> $last_name,
+        ':phone_number'=>$phone,
+        ':email_address'=>$email,
+        ':country'=>$country,
+        ':date_of_birth'=>$date_of_birth,
+        ':gender'=>$gender,
+        ':password'=>$password,
+        ':create_date'=>$create_date
+    ]);
+    return ($statement->rowCount() == 1);
+}
+
+
+

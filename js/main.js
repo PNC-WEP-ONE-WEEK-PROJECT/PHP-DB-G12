@@ -25,6 +25,7 @@ if(btn_post.length > 0){
 }
 // We want the modal to close when the OK button is clicked
 function close_create() {
+  clear_form();
   modal.style.display = "none";
 }
 
@@ -57,7 +58,7 @@ function deleteImg(event){
                 icon: "success",
               })
               ;
-            event.target.parentElement.remove();
+            event.target.parentElement.parentElement.remove();
             } else {
               swal("Nothing deleted!");
             }
@@ -70,9 +71,31 @@ if(deleteImage != null){
 }
 
 // loadfile image
+var image = document.getElementById('output');
+var iconRemoveImg = document.getElementById('remove_photo');
 var loadFile = function(event) {
-  var image = document.getElementById('output');
+  show(content_show_img);
+  show(iconRemoveImg);
+  image.setAttribute("class","flex w-full border p-1 rounded-md");
   image.src = URL.createObjectURL(event.target.files[0]);
 };
+
+// clear post form file
+let input_img = document.getElementById("upload-image");
+let post_content = document.getElementById("post_content");
+let content_show_img = document.getElementById("content_show_img");
+function clear_form(){
+  hide(iconRemoveImg);
+  image.src = "unknown";
+  input_img.value = "";
+  post_content.value = "";
+}
+
+function clear_img(){
+  image.src = "unknown";
+  input_img.value = "";
+  hide(content_show_img);
+}
+
 
 

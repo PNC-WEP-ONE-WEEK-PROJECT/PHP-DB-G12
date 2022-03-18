@@ -3,7 +3,7 @@
 ?>
 
 <!-- Get all data from database and display it -->
-<div class="mt-28 block max-w-xl mx-96 rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3">
+<div class="mt-28 block m-auto w-2/5 rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3">
    <div class="header p-4 pb-0">
         <ul role="list" class="p-0 divide-y divide-slate-200">
             <li class="flex py-4 first:pt-0 last:pb-0">
@@ -22,33 +22,41 @@
     </div>
 </div>
 
-<div id="my-modal" class="hidden fixed z-50 inset-0 mt-20 overflow-y-auto">
-  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-    <div class="fixed inset-0 backdrop-blur-sm bg-gray-200 bg-opacity-50 transition-opacity" aria-hidden="true"></div>
-    <div class="rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 w-6/12 m-auto p-6 backdrop-blur-none ">
+<div id="my-modal" class="hidden fixed z-50 inset-0 mt-10">
+  <div class="flex items-end justify-center min-h-screen px-4 pb-20 text-center sm:block sm:p-0">
+    <div class="m-auto fixed inset-0 backdrop-blur-sm bg-gray-200 bg-opacity-50 transition-opacity" aria-hidden="true"></div>
+    <div class="w-2/5 h-2/3 m-auto p-6 backdrop-blur-none mt-3 block max-w-xl rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3">
+        <h2 class="text-2xl pb-4 font-bold text-blue-400 text-center border-b">Create post</h2>
         <div class="w-full text-right flex justify-between">
             <li class="flex first:pt-0 last:pb-0 items-center">
                  <img class="object-cover h-12 w-12 rounded-full" src="/images/teacher.jpg" alt="" width=""/>
                  <p class="ml-5 text-lg font-bold text-slate-900">Rady Y</p>
              </li>
-            <svg onclick="close_create()" xmlns="http://www.w3.org/2000/svg" class="cursor-pointer h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+             <div class="p-1 absolute top-6 right-4 cursor-pointer rounded-full hover:bg-slate-300 hover:text-red-500">
+                 <svg onclick="close_create()" xmlns="http://www.w3.org/2000/svg" class=" h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                 </svg>
+             </div>
         </div>
         <form action="../controllers/create_post.php" method="post" enctype="multipart/form-data">
-            <textarea class="w-full resize-none outline-none p-2" name="post_description" id="" rows="2" placeholder="Descrition..."></textarea>
-            <div class="flex justify-center mt-4 mb-4">
-                <img class="flex bg-black w-1/2" src="" id="output" alt="">
+            <div class="object-cover w-full h-72 scrolling-auto overflow-auto overscroll-contain p-1">
+                <textarea class="w-full resize-none outline-none p-2" name="post_description" id="post_content" rows="2" placeholder="Descrition..."></textarea>
+                <div id="content_show_img" class="flex justify-center mt-4 mb-4 relative">
+                    <img class="flex w-full" src="" id="output" alt="">
+                    <div class="bg-slate-200 p-3 absolute right-0 z-20" id="remove_photo" style="display: none;" onclick="clear_img()">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-red-700 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex justify-center border p-1 rounded-md">
+                    <input id="upload-image" type="file" name="filename" accept="image/gif, image/jpeg, image/png" onchange="loadFile(event)" hidden>
+                    <label for="upload-image" class="w-full bg-gray-300 text-white p-10 rounded-md cursor-pointer flex justify-center"><svg class=" h-0 w-0 fill-slate-300 bg-black " viewBox="0 0 20 20"><img class="w-6" src="../images/icon/photo.svg" alt=""></svg></label>
+        
+                </div>
+            <br>
             </div>
-    
-            <div class="flex justify-center mb-4">
-    
-                <input id="upload-image" type="file" name="filename" accept="image/gif, image/jpeg, image/png" onchange="loadFile(event)" hidden>
-                <label for="upload-image" class="w-full bg-gray-300 text-white p-3 rounded-md cursor-pointer flex justify-center"><svg class=" h-0 w-0 fill-slate-300 bg-black " viewBox="0 0 20 20"><img class="w-6" src="../images/icon/photo.svg" alt=""></svg></label>
-    
-            </div>
-            <hr class="border-gray-400"><br>
-            <button id="ok-btn"  class="w-full bg-gray-300 p-3 text-gray-600 font-bold rounded-md" type="submit" name="submit">Post</button>
+            <button id="ok-btn"  class="w-full bg-blue-500 p-3 text-white font-bold rounded-md" type="submit" name="submit">Post</button>
         </form>
     </div>
     </div>
