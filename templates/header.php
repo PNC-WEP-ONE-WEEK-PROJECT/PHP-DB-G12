@@ -1,3 +1,13 @@
+<?php
+require_once('models/login_acc.php');
+
+?>
+
+<?php 
+ $name =  getUserInfo($_SESSION['user_id']);
+ $firstN = $name['first_name'];
+ $lastN =  $name['last_name'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +44,7 @@
                     <button class="relative block h-10 w-10 rounded-full overflow-hidden shadow">
                         <img class="h-full w-full object-cover" src="../images/teacher.jpg" alt="Your avatar">
                     </button>
-                    <p class="ml-2 text-base font-bold text-slate-700">Rady Y</p>
+                    <p class="ml-2 text-base font-bold text-slate-700"><?= $firstN ." ". $lastN; ?></p>
                 </div>
             
                 <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"
@@ -45,7 +55,7 @@
                     style="display: none;">
                     <a href="#"
                         class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-400">Profile</a>
-                    <a href="/login"
+                    <a href="../controllers/logout.php"
                         class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-400">Logout</a>
                 </div>
             </div>

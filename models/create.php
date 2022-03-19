@@ -18,4 +18,6 @@ function createPost($post_description,$image,$post_date,$user_id)
     return ($statement->rowCount() == 1);
 
 }
+
+
 ?>

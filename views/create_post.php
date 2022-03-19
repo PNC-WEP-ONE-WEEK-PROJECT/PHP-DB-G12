@@ -1,5 +1,16 @@
+<?php 
+    require_once('models/login_acc.php');
+?>
+
+<?php 
+     $name =  getUserInfo($_SESSION['user_id']);
+     $firstN = $name['first_name'];
+     $lastN =  $name['last_name'];
+?>
+
 <?php
 // require_once('../models/create.php');
+    if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
 ?>
 
 <!-- Get all data from database and display it -->
@@ -30,7 +41,7 @@
         <div class="w-full text-right flex justify-between">
             <li class="flex first:pt-0 last:pb-0 items-center">
                  <img class="object-cover h-12 w-12 rounded-full" src="/images/teacher.jpg" alt="" width=""/>
-                 <p class="ml-5 text-lg font-bold text-slate-900">Rady Y</p>
+                 <p class="ml-5 text-lg font-bold text-slate-900"><?= $firstN ." ". $lastN; ?></p>
              </li>
              <div class="p-1 absolute top-6 right-4 cursor-pointer rounded-full hover:bg-slate-300 hover:text-red-500">
                  <svg onclick="close_create()" xmlns="http://www.w3.org/2000/svg" class=" h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -61,3 +72,8 @@
     </div>
     </div>
 </div>
+<?php 
+else:
+header('location: /index.php');
+endif;
+?>
