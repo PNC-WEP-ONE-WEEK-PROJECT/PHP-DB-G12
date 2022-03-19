@@ -1,7 +1,5 @@
 <?php
-// $pathUrl = parse_url($_SERVER['REQUEST_URI']);
-// $pathUrl['path'] === "/views/register.php" ? session_start() : null;
-// isset($_SESSION['login']) ? header('Location: ../index.php') : null;
+    // if (isset($_SESSION['login']) and !empty($_SESSION['login'])):
 ?>
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -293,5 +291,14 @@
     </form>
 </div>
 
+<<<<<<< HEAD
 
+=======
+<?php 
+// else:
+// header('location: /index.php');
+// endif;
+
+?>
+>>>>>>> b0eab7daf19c28a36b9639991618bbe926d34ccd
 <script src="../js/main.js"></script>
