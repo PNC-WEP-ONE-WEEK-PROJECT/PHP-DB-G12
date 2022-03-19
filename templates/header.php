@@ -1,8 +1,6 @@
 <?php
 require_once('models/login_acc.php');
-
 ?>
-
 <?php 
  $name =  getUserInfo($_SESSION['user_id']);
  $firstN = $name['first_name'];

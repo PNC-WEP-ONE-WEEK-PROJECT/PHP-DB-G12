@@ -5,6 +5,7 @@
     require_once('models/post.php');
     require_once('models/like.php');
     require_once('create_post.php');
+    require_once('models/comment.php');
     // require_once('models/login_acc.php');
 
 ?>
@@ -14,6 +15,7 @@
 //  $lastN =  $name['last_name'];
 
 ?>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <?php 
@@ -85,6 +87,42 @@ foreach ($items as $item):
                     Comment
             </button>
         </div>
+        <div>
+       <div class="flex">
+            <img class="object-cover h-10 w-10 rounded-full ml-4 mt-1.5" src="images/teacher.jpg" alt="" width="">
+            <form action="/controllers/create_comment.php" class="flex w-full" method="post">
+                <input type="hidden" value="<?=$item['post_id']?>" name="post_id">
+                <input type="text" placeholder="Add a comment" name="post_comment" class="w-4/5 p-2 rounded-md mb-4 ml-2 border-[1.5px] outline-none">
+                <button type="submit" name="comment" class="p-3 rounded-md mb-4 mx-2 border-2 text-white bg-blue-500" >Post</button>
+            </form>
+        </div>
+        <div class="justify-center and items-center">
+            <?php
+            $post_id = $item['post_id'];
+            $comments=getCommentsByPostId($post_id);
+            if($comments != null):
+                foreach($comments as $comment):
+            ?>
+                <div class="flex justify-items-center mb-1 bg-white">
+                    <div>
+                        <img src="<?= 'images/'.$comment['profile'] ?>" alt="" class="object-cover w-8 h-8 rounded-full ml-4 mr-2">
+                    </div>
+                    <div>
+                        <p class="rounded-lg bg-slate-300 p-1 w-15"><?= $comment['username']; echo "<br>"; echo $comment['comment'] ?></p>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-sm text-slate-500 truncate"><?= date("F jS, Y", strtotime($comment['comment_date'])) ." at ". date("g:iA", strtotime($comment['comment_date'])); ?></p>
+                    <span class="hover:underline hover:text-blue-500 cursor-pointer">Edit</span>
+                    <span class="hover:underline hover:text-blue-500 cursor-pointer">Delete</span>
+                </div>
+
+            <?php
+                endforeach;
+            endif;
+            ?>
+       </div>
+    </div>
     </div>
     </div>
 

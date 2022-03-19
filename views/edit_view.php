@@ -1,9 +1,13 @@
 
 <?php
-if (isset($_SESSION['user_id']) and !empty($_SESSION['login'])):
-require_once("../templates/header.php");
+session_start();
+// require_once("../templates/header.php");
 require_once("../models/post.php");
+
+if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
 ?>
+
+<script src="https://cdn.tailwindcss.com"></script>
 <div class="fixed z-30 inset-0 backdrop-blur-sm bg-gray-200 bg-opacity-50 transition-opacity" aria-hidden="true"></div>
 <div class="h-2/3 flex justify-center mt-14 w-2/5 m-auto rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg">
     <div class="p-3 z-50 fixed rounded shadow-2xl w-2/5 m-auto bg-white backdrop-blur-none">
@@ -63,8 +67,9 @@ require_once("../models/post.php");
     </div>
 </div>
 <?php 
-endif;
+else:
 header('location: /index.php');
+endif;
 
 ?>
 <script src="../js/main.js"></script>

@@ -60,9 +60,13 @@
                         </svg>
                     </div>
                 </div>
-                <div class="flex justify-center border p-1 rounded-md">
+                <div class="flex justify-center border-dashed border-2 border-blue-400 p-1 mt-10 rounded-md">
                     <input id="upload-image" type="file" name="filename" accept="image/gif, image/jpeg, image/png" onchange="loadFile(event)" hidden>
-                    <label for="upload-image" class="w-full bg-gray-300 text-white p-10 rounded-md cursor-pointer flex justify-center"><svg class=" h-0 w-0 fill-slate-300 bg-black " viewBox="0 0 20 20"><img class="w-6" src="../images/icon/photo.svg" alt=""></svg></label>
+                    <label for="upload-image" class="w-full text-blue-400 p-10 rounded-md cursor-pointer flex justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+                        </svg>
+                    </label>
         
                 </div>
             <br>
