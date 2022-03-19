@@ -1,16 +1,25 @@
-<?php 
-    require_once('../templates/header.php');
+<?php
+// $pathUrl = parse_url($_SERVER['REQUEST_URI']);
+// $pathUrl['path'] === "/views/register.php" ? session_start() : null;
+// isset($_SESSION['login']) ? header('Location: ../index.php') : null;
 ?>
-<div class="max-w-md m-auto bg-gray-200 p-6 mt-28 rounded-md pt-6 pb-10 mb-6 text-center">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<div class="max-w-md m-auto bg-gray-200 p-6 mt-10 rounded-md pt-6 pb-10 mb-6 text-center">
     <h1 class="text-blue-500 text-center font-bold text-3xl">Sign Up</h1>
     <form action="../controllers/create_acc.php" method="post" class="mt-6">
         <div class="flex m-auto mb-4">
-            <input type="text" name="first-name" placeholder="First name" class="w-full p-2 outline-none border-2" required>
-            <input type="text" name="last-name" placeholder="Last name" class="w-full ml-4 p-2 outline-none border-2" required>
+            <input type="text" name="first-name" onkeyup="if (/[^|a-zA-Z0-9]+/g.test(this.value)) this.value = this.value.replace(/[^|a-zA-Z0-9]+/g,'')" placeholder="First name" class="w-full p-2 outline-none border-2" required>
+            <input type="text" name="last-name" onkeyup="if (/[^|a-zA-Z0-9]+/g.test(this.value)) this.value = this.value.replace(/[^|a-zA-Z0-9]+/g,'')" placeholder="Last name" class="w-full ml-4 p-2 outline-none border-2" required>
         </div>
         <input type="email" name="email" placeholder="Email address" class="p-2 mb-4 w-full outline-none border-2" required><br>
-        <input type="tel" id="phone" name="phone" placeholder="Phone" class="p-2 mb-4 w-full outline-none border-2" required><br>
-        <input type="password" name="password" placeholder="Password" class="p-2 mb-4 w-full outline-none border-2" required><br>
+        <input type="tel" id="phone" name="phone"  minlength="8" maxlength="10" onkeyup="if (/[^|0-9]+/g.test(this.value)) this.value = this.value.replace(/[^|0-9]+/g,'')" placeholder="Phone" class="p-2 mb-4 w-full outline-none border-2" required><br>
+        <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Password" class="p-2  w-full outline-none border-2" required>
+        <div class="flex justify-end">
+            <input type="checkbox" id="show-password" onclick="showPassword()" hidden>
+            <label for="show-password" class="cursor-pointer border-b-2 text-blue-700 -mt-10 p-2 mb-4">show</label>
+        </div>
+        
 
         <div class="flex mb-4">
             <label for="" class="p-2">Birthday: </label>
@@ -280,6 +289,9 @@
             </select>
         </div>    
         <button type="submit" name="submit" class="m-auto p-2 bg-green-600 rounded-md pl-16 pr-16 font-bold mt-3 text-white">Sign Up</button>
-        <p class="text-blue-600"><a href="">Already have an account?</a></p>
+        <p class="text-blue-600"><a href="login.php">Already have an account?</a></p>
     </form>
 </div>
+
+
+<script src="../js/main.js"></script>

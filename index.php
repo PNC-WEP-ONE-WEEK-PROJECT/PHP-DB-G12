@@ -85,7 +85,7 @@ foreach ($items as $item):
     <div>
        <div class="flex">
             <img class="object-cover h-10 w-10 rounded-full ml-4 mt-1.5" src="images/teacher.jpg" alt="" width="">
-            <form action="/controllers/create_comment.php" class="flex w-full" method="post">
+            <form action="controllers/create_comment.php" class="flex w-full" method="post">
                 <input type="hidden" value="<?=$item['post_id']?>" name="post_id">
                 <input type="text" placeholder="Add a comment" name="post_comment" class="w-3/4 p-3 rounded-md mb-4 ml-2 border-2">
                 <button type="submit" name="comment" class="p-3 rounded-md mb-4 mx-2 border-2 font-bold bg-blue-300" >Post</button>

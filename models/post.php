@@ -31,6 +31,22 @@ function deleteItem($id)
     ]);
     return ($statement->rowCount()==1);
 }
+
+function getPicName($id) {
+    global $db;
+    $statement = $db->prepare("SELECT image FROM posts WHERE post_id= :id limit 1"); 
+    $statement -> execute([
+        'id' => $id
+    ]);
+ 
+    $img_name = $statement->fetch();
+    return $img_name;
+}
+function deletePicFromFolder($img_name) {
+    $file_img = '../images/'. $img_name['image'] ;
+    unlink($file_img);
+}
+
 /**
  * Get a single post
  * @param integer $id : the post id
