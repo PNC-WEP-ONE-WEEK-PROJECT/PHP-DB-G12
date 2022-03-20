@@ -108,8 +108,9 @@ foreach ($items as $item):
                 </div>
                 <div>
                     <p class="text-sm text-slate-500 truncate"><?= date("F jS, Y", strtotime($comment['comment_date'])) ." at ". date("g:iA", strtotime($comment['comment_date'])); ?></p>
-                    <span class="hover:underline hover:text-blue-500 cursor-pointer">Edit</span>
-                    <span class="hover:underline hover:text-blue-500 cursor-pointer">Delete</span>
+                    
+                    <a href="views/edit_comment.php?id=<?=$comment['comment_id']?>" class="hover:underline hover:text-blue-500 cursor-pointer">Edit</a>                
+                    <a href="controllers/delete_comment.php?id=<?=$comment['comment_id']?>" class="hover:underline hover:text-blue-500 cursor-pointer">Delete</a>                
                 </div>
 
             <?php
