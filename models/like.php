@@ -28,6 +28,6 @@ function getNumberLike($post_id){
     $statement->execute([
         ':post_id'=> $post_id
     ]);
-    $items = $statement->fetchAll(); 
+    $items = $statement->fetch();
     return $items;
 }

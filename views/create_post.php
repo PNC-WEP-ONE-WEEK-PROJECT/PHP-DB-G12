@@ -1,5 +1,16 @@
+<?php 
+    require_once('models/login_acc.php');
+?>
+
+<?php 
+     $name =  getUserInfo($_SESSION['user_id']);
+     $firstN = $name['first_name'];
+     $lastN =  $name['last_name'];
+?>
+
 <?php
 // require_once('../models/create.php');
+    if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
 ?>
 
 <!-- Get all data from database and display it -->
@@ -30,7 +41,7 @@
         <div class="w-full text-right flex justify-between">
             <li class="flex first:pt-0 last:pb-0 items-center">
                  <img class="object-cover h-12 w-12 rounded-full" src="/images/teacher.jpg" alt="" width=""/>
-                 <p class="ml-5 text-lg font-bold text-slate-900">Rady Y</p>
+                 <p class="ml-5 text-lg font-bold text-slate-900"><?= $firstN ." ". $lastN; ?></p>
              </li>
              <div class="p-1 absolute top-6 right-4 cursor-pointer rounded-full hover:bg-slate-300 hover:text-red-500">
                  <svg onclick="close_create()" xmlns="http://www.w3.org/2000/svg" class=" h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -49,9 +60,13 @@
                         </svg>
                     </div>
                 </div>
-                <div class="flex justify-center border p-1 rounded-md">
+                <div class="flex justify-center border-dashed border-2 border-blue-400 p-1 mt-10 rounded-md">
                     <input id="upload-image" type="file" name="filename" accept="image/gif, image/jpeg, image/png" onchange="loadFile(event)" hidden>
-                    <label for="upload-image" class="w-full bg-gray-300 text-white p-10 rounded-md cursor-pointer flex justify-center"><svg class=" h-0 w-0 fill-slate-300 bg-black " viewBox="0 0 20 20"><img class="w-6" src="../images/icon/photo.svg" alt=""></svg></label>
+                    <label for="upload-image" class="w-full text-blue-400 p-10 rounded-md cursor-pointer flex justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+                        </svg>
+                    </label>
         
                 </div>
             <br>
@@ -61,3 +76,8 @@
     </div>
     </div>
 </div>
+<?php 
+else:
+header('location: /index.php');
+endif;
+?>
