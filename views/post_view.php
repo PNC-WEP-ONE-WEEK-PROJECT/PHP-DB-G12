@@ -15,7 +15,10 @@
 //  $lastN =  $name['last_name'];
 
 ?>
-
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <?php 
@@ -23,7 +26,7 @@ $items = getItems();
 foreach ($items as $item):
     ?>
 <body class="bg-slate-300">
-    <div class="mt-5 block m-auto w-2/5 rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3">
+    <div id="<?="l". $item['post_id'] ?>" class="mt-5 block m-auto w-2/5 rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3">
         <div class="header p-4 pb-0">
             <ul role="list" class="p-0 divide-y divide-slate-200">
                 <li class="flex py-4 first:pt-0 last:pb-0">
@@ -75,9 +78,9 @@ foreach ($items as $item):
             endif;
         ?>
         <div class="flex justify-around">
-            <form class="w-1/2 flex items-center justify-center p-2" action="controllers/user_like.php?" method="post">
-                <input type="hidden" name="post_id" value="<?= $item['post_id'] ?>">
-                <button type="submit" class="focus:text-blue-400 flex items-center">
+            <form class="number_of_like w-1/2 flex items-center justify-center p-2" action="" method="post">
+                <input class="post_like" type="hidden" name="post_id" value="<?= $item['post_id'] ?>">
+                <button id="<?= $item['post_id'] ?>" onclick="send_like(<?= $item['post_id'] ?>)" type="button" class="<?=userLiked($post_id, $user_id)?'text-blue-400':''?> btn_like focus:text-blue-400 flex items-center">
                     <i class="fa fa-thumbs-o-up pr-2" style="font-size:30px"></i>
                     Like 
                 </button>
@@ -135,5 +138,6 @@ endif;
 </body>
 
 
+<script src="js/like.js"></script>
 <script src="js/main.js"></script>
 
