@@ -1,4 +1,3 @@
-
 <?php
     if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
     require_once('templates/header.php');
@@ -62,7 +61,7 @@ foreach ($items as $item):
             <?php 
                 }
                 ?>
-        </div>
+    </div>
     <?php 
         $like = getNumberLike($item['post_id']);
         if($like !== Null):
@@ -99,7 +98,7 @@ foreach ($items as $item):
                 <button type="submit" name="comment" class="p-3 rounded-md mb-4 mx-2 border-2 text-white bg-blue-500" >Post</button>
             </form>
         </div>
-        <div class="justify-center and items-center bg-black">
+        <div class="justify-center and items-center">
             <?php
             $post_id = $item['post_id'];
             $comments=getCommentsByPostId($post_id);
@@ -116,7 +115,6 @@ foreach ($items as $item):
                 </div>
                 <div>
                     <p class="text-sm text-slate-500 truncate"><?= date("F jS, Y", strtotime($comment['comment_date'])) ." at ". date("g:iA", strtotime($comment['comment_date'])); ?></p>
-                    
                     <a href="views/edit_comment.php?id=<?=$comment['comment_id']?>" class="hover:underline hover:text-blue-500 cursor-pointer">Edit</a>                
                     <a href="controllers/delete_comment.php?id=<?=$comment['comment_id']?>" class="hover:underline hover:text-blue-500 cursor-pointer">Delete</a>                
                 </div>
@@ -125,11 +123,10 @@ foreach ($items as $item):
                 endforeach;
             endif;
             ?>
-        </div>
-        </div>
+       </div>
     </div>
     </div>
-</div>
+    </div>
 
 <?php 
 endforeach;
@@ -142,4 +139,3 @@ endif;
 
 <script src="js/like.js"></script>
 <script src="js/main.js"></script>
-
