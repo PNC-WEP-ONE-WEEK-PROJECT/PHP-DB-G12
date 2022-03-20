@@ -2,6 +2,11 @@
     require_once('models/login_acc.php');
 ?>
 
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"></script>
+    
 <?php 
      $name =  getUserInfo($_SESSION['user_id']);
      $firstN = $name['first_name'];
@@ -14,7 +19,7 @@
 ?>
 
 <!-- Get all data from database and display it -->
-<div class="mt-28 block m-auto w-2/5 rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3">
+<div id="create_page" class="mt-28 block m-auto w-2/5 rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3">
    <div class="header p-4 pb-0">
         <ul role="list" class="p-0 divide-y divide-slate-200">
             <li class="flex py-4 first:pt-0 last:pb-0">
@@ -81,3 +86,4 @@ else:
 header('location: /index.php');
 endif;
 ?>
+</body>
