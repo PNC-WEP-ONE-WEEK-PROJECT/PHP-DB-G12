@@ -62,7 +62,7 @@ foreach ($items as $item):
             <?php 
                 }
                 ?>
-    </div>
+        </div>
     <?php 
         $like = getNumberLike($item['post_id']);
         if($like !== Null):
@@ -125,7 +125,9 @@ foreach ($items as $item):
                 endforeach;
             endif;
             ?>
-       </div>
+        </div>
+        </div>
+    </div>
     </div>
 </div>
 
