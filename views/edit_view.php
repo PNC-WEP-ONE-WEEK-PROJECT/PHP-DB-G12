@@ -28,6 +28,11 @@ if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
                     </svg>
                 </a>
             </div>
+            <?php
+            $userInfo = getUserInfo($_SESSION['user_id']);
+            $firstN = $userInfo['first_name'];
+            $lastN =  $userInfo['last_name'];
+            ?>
             <h2 class="text-2xl pb-4 font-bold text-blue-400 text-center border-b">Edit post</h2>
             <li class="flex py-2 first:pt-0 last:pb-0 items-center">
                 <img class="object-cover h-12 w-12 rounded-full" src="/images/<?= $profile; ?>">

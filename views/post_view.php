@@ -51,6 +51,9 @@ foreach ($items as $item):
                                 Delete Post
                             </a>
                         </div>
+                        <?php
+                        // endif;
+                        ?>
                     </div>
                 </li>
             </ul>
@@ -77,7 +80,10 @@ foreach ($items as $item):
                 <div id="<?= "number" . $item['post_id']?>" class="flex items-center"><?= $like['numbers_like'] ?> </div>
                 <svg class="w-7 h-7 ml-2"  xmlns="http://www.w3.org/2000/svg" viewBox="-9.31019674359186 -9.31019674359186 200.60019674359185 200.59919674359185"><linearGradient id="a" x1="47.061%" x2="47.061%" y1="-3.394%" y2="96.606%"><stop offset="0" stop-color="#37aeff"/><stop offset=".05" stop-color="#37aeff"/><stop offset="1" stop-color="#1861f7"/></linearGradient><g fill="none"><path d="M0 95.645c0 52.823 42.822 95.644 95.645 95.644 52.823 0 95.644-42.821 95.644-95.644C191.29 42.822 148.468 0 95.645 0A95.617 95.617 0 0 0 0 95.645" fill="url(#a)"/><path d="M151.421 99.986a9.095 9.095 0 0 0-3.901-8.737 18.08 18.08 0 0 0 3.6-8.628c0-8.463-7.941-10.99-20.168-10.99-7.27.08-14.51.936-21.597 2.555.66-3.627 5.496-14.15 5.496-17.667 0-7.31-1.731-16.486-8.436-19.976a11.925 11.925 0 0 0-6.154-1.593c-2.68-.126-5.303.8-7.309 2.583a6.32 6.32 0 0 0-.742 3.681l1.21 13.738c0 10.99-16.899 24.729-16.899 40.528v33.136c0 5.88 7.886 10.056 19.234 10.056h31.46c8.243 0 10.084-1.428 12.2-5.275a7.583 7.583 0 0 0-.166-8.023 12.364 12.364 0 0 0 7.749-8.93c.487-2.412.118-4.92-1.044-7.089a9.48 9.48 0 0 0 5.495-9.369M48.743 80.945h9.836a8.243 8.243 0 0 1 8.243 8.243V135.1a8.243 8.243 0 0 1-8.243 8.242h-9.836a8.243 8.243 0 0 1-8.243-8.242V89.298a8.243 8.243 0 0 1 8.243-8.243" fill="#fff"/></g></svg>
             </div>
-            <div class="comment-number">534 comments</div>
+            <?php
+            $number_comments = getNumberOfComments($item['post_id']);
+            ?>
+            <div class="comment-number"><?= $number_comments['numberOfComments']." "?>comments</div>
         </div><hr>
         <?php
             endif;
@@ -100,32 +106,46 @@ foreach ($items as $item):
         </div>
         <div>
        <div class="flex">
-            <img class="object-cover h-10 w-10 rounded-full ml-4 mt-1.5" src="images/<?=$item['profile'] ?>" alt="" width="">
+           <?php
+           $userInfo = getUserInfo($_SESSION['user_id']);
+           ?>
+            <img class="object-cover h-10 w-10 rounded-full ml-3 mt-1.5" src="/images/<?= $userInfo['profile']?>" alt="" width="">
             <form action="/controllers/create_comment.php" class="flex w-full" method="post">
                 <input type="hidden" value="<?=$item['post_id']?>" name="post_id">
                 <input type="text" placeholder="Add a comment" name="post_comment" class="w-4/5 p-2 rounded-md mb-4 ml-2 border-[1.5px] outline-none">
-                <button type="submit" name="comment" class="p-3 rounded-md mb-4 mx-2 border-2 text-white bg-blue-500" >Post</button>
+                <button type="submit" name="comment" class="p-3 rounded-md mb-4 mx-2 border-2 text-white bg-blue-500 w-1/5 text-lg" >Post</button>
             </form>
         </div>
-        <div class="justify-center and items-center">
+        <div class="-mt-4 ml-10">
             <?php
             $post_id = $item['post_id'];
             $comments=getCommentsByPostId($post_id);
             if($comments != null):
                 foreach($comments as $comment):
             ?>
-                <div class="flex justify-items-center mb-1 bg-white">
+                <div class="flex justify-items-center mb-1 bg-white mt-4">
                     <div>
                         <img src="<?= 'images/'.$comment['profile'] ?>" alt="" class="object-cover w-8 h-8 rounded-full ml-4 mr-2">
                     </div>
-                    <div>
-                        <p class="rounded-lg bg-slate-300 p-1 w-15"><?= $comment['username']; echo "<br>"; echo $comment['comment'] ?></p>
+                    <div class="w-3/4">
+                        <?php
+                        $name = $comment['username'];
+                        ?>
+                        <p class="rounded-lg bg-slate-300 p-1 w-2/3"> <?= "<b>$name</b>"; echo "<br>"; echo $comment['comment'] ?></p>
                     </div>
                 </div>
-                <div>
-                    <p class="text-sm text-slate-500 truncate"><?= date("F jS, Y", strtotime($comment['comment_date'])) ." at ". date("g:iA", strtotime($comment['comment_date'])); ?></p>
-                    <a href="views/edit_comment.php?id=<?=$comment['comment_id']?>" class="hover:underline hover:text-blue-500 cursor-pointer">Edit</a>                
-                    <a href="controllers/delete_comment.php?id=<?=$comment['comment_id']?>" class="hover:underline hover:text-blue-500 cursor-pointer">Delete</a>                
+                <div class="flex">
+                    <div class="ml-14">
+                        <?php
+                        if ($comment['user_id'] == $_SESSION['user_id']):
+                        ?>
+                        <a href="views/edit_comment.php?id=<?=$comment['comment_id']?>" class="hover:underline hover:text-blue-500 cursor-pointer hover:bg-blue-200 hover:rounded-xl hover:px-1.5 mr-2">Edit</a>                
+                        <a href="controllers/delete_comment.php?id=<?=$comment['comment_id']?>" class="hover:underline hover:text-blue-500 cursor-pointer hover:bg-blue-200 hover:rounded-xl hover:px-1.5 mr-2">Delete</a>                
+                        <?php
+                        endif;
+                        ?>
+                    </div>
+                    <p class="text-sm text-slate-500 truncate ml-2"><?= date("F jS, Y", strtotime($comment['comment_date'])) ." at ". date("g:iA", strtotime($comment['comment_date'])); ?></p>
                 </div>
 
             <?php
@@ -136,7 +156,6 @@ foreach ($items as $item):
     </div>
     </div>
     </div>
-
 <?php 
 endforeach;
 else:
