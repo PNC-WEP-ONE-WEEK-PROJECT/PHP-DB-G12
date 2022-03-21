@@ -34,7 +34,7 @@ isset($_SESSION['user_id']) ? header('Location: ../index.php') : null ;
         $email = $_POST['email'];
         $password = $_POST['password'];
         if (!empty($username) and !empty($password) and $username == $user and $password == $pass) {
-            $_SESSION['login'] = $username;
+            $_SESSION['user_id'] = $username;
             header('Location: ../index.php');
         } else {
             echo "Error login";
