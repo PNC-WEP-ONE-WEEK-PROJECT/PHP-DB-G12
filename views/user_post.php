@@ -99,7 +99,7 @@ foreach ($items as $item):
         </div>
         <div>
        <div class="flex">
-            <img class="object-cover h-10 w-10 rounded-full ml-4 mt-1.5" src="/images/<?=$profile['profile'] ?>" alt="" width="">
+            <img class="object-cover h-10 w-10 rounded-full ml-4 mt-1.5" src="/images/user/<?=$profile['profile'] ?>" alt="" width="">
             <form action="/controllers/create_comment.php" class="flex w-full" method="post">
                 <input type="hidden" value="<?=$item['post_id']?>" name="post_id">
                 <input type="text" placeholder="Add a comment" name="post_comment" class="w-4/5 p-2 rounded-md mb-4 ml-2 border-[1.5px] outline-none">

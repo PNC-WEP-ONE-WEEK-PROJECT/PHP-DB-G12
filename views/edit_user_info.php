@@ -1,11 +1,13 @@
 
 <?php
     session_start();
+    require_once(realpath(dirname(__FILE__) . '/../templates/header.php'));
     require_once('../models/login_acc.php');
     $user_info = getUserInfo($_SESSION['user_id']);
+    if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
 ?>
 <script src="https://cdn.tailwindcss.com"></script>
-<body class="bg-gray-300">
+<body class="bg-gray-300 mt-[100px]">
 <div class="max-w-lg m-auto bg-white p-6 mt-10 rounded-md pt-6 pb-10 mb-6 ">
     <h1 class="text-blue-500 text-center font-bold text-3xl">Edit Information</h1>
     <form action="../controllers/edit_user_info.php?id=<?php $user_info['user_id'] ?>" method="post" class="mt-6">
@@ -71,5 +73,9 @@
         <button type="submit" name="submit" id="" class="m-auto p-2 bg-blue-600 rounded-md pl-16 pr-16 font-bold mt-3 text-white">Save</button>
     </form>
 </div>
-
+<?php
+else:
+    header('location: /index.php');
+endif;
+?>
 <script src="../js/main.js"></script>

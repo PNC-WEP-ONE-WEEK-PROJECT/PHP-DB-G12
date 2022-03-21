@@ -1,7 +1,9 @@
 <?php 
+    $page = "friends";
     session_start();
     require_once(realpath(dirname(__FILE__) . '/../models/friend.php'));
     require_once(realpath(dirname(__FILE__) . '/../templates/header.php'));
+    if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
 
 ?>
 <script
@@ -9,7 +11,6 @@ src="https://code.jquery.com/jquery-3.6.0.min.js"
 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 crossorigin="anonymous"></script>
 <script src="https://cdn.tailwindcss.com"></script>
-
 <div class='flex flex-col items-center min-h-screen p-4 bg-slate-200'>
     <div class="flex mt-20 items-center justify-center space-x-3">   
         <button class="bg-blue-500 shadow-xl px-4 py-2 font-semibold text-white inline-flex items-center space-x-2 rounded">
@@ -22,11 +23,6 @@ crossorigin="anonymous"></script>
             <i class="fa fa-user-plus"></i>
             <span>Add Friends</span>
         </a>
-        <button class="group relative hover:bg-blue-500 hover:shadow-xl bg-blue-300 px-4 py-2 font-semibold text-white inline-flex items-center space-x-2 rounded">
-            <i class="fa fa-users"></i>
-            <div class="group-hover:bg-red-500 absolute -top-3 -right-3 px-2.5 py-0.5 bg-red-300 rounded-full text-xs">200</div>
-            <span>Friends Request</span>
-        </button>
     </div>
     <div class='user-list w-full mt-6 max-w-lg mx-auto bg-white rounded shadow-xl flex flex-col py-4'>
         <?php 
@@ -40,7 +36,7 @@ crossorigin="anonymous"></script>
         <div id="content<?=$friendInfo['user_id']?>" class="user-row flex flex-col items-center justify-between cursor-pointer p-4 duration-300 sm:flex-row sm:py-4 sm:px-8 hover:bg-[#f6f8f9]">
             <div class="user flex items-center text-center flex-col sm:flex-row sm:text-left">
                 <div class="avatar-content mb-2.5 sm:mb-0 sm:mr-2.5">
-                    <img class="avatar w-20 h-20 rounded-full" src="/images/<?=$friendInfo['profile']?>">
+                    <img class="avatar w-20 h-20 rounded-full" src="/images/user/<?=$friendInfo['profile']?>">
                 </div>
                 <div class="user-body flex flex-col mb-4 sm:mb-0 sm:mr-4">
                     <a href="#" class="title font-medium no-underline"><?=$friendInfo['first_name'] ?></a>
@@ -67,3 +63,8 @@ crossorigin="anonymous"></script>
 </div>
 <script src="/js/add_friend.js"></script>
 <script src="/js/unfriend.js"></script>
+<?php 
+else:
+    header('location: /index.php');
+endif;
+?>

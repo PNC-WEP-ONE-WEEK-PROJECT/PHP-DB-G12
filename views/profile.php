@@ -11,24 +11,30 @@
 ?>
 <body class="bg-slate-300 mt-28">
     <div class="rounded-lg mt-5 block m-auto w-3/5 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3">
-        <form action="../controllers/upload_profile.php" method="post" enctype="multipart/form-data" class="rounded-lg bg-slate-100 p-10 w-full h-1/3 top-10 left-5">
-            <!-- <div class="shrink-0">
-                <img id="profilepic" class="h-20 w-20 object-cover rounded-full" src="/images/user/" alt="Current profile photo" />
-            </div> -->
-            <input type="text" name="user_id" value="<?=$user_info['user_id']?>" hidden>
-            <div class="flex items-center space-x-6 mb-2">
-                <input id="img" type="file" name="image" accept="image/gif, image/jpeg, image/png, image/jpg" hidden >
-                <label for="img" class="">                
-                    <img id="profilepic" class="h-20 w-20 object-cover rounded-full hover:cursor-pointer hover:border-4 hover:border-blue-700" src="/images/user/<?=$user_info['profile']?>" alt="Current profile photo" />
-                </label>
-                <label class="block text-2xl font-bold text-slate-700">
-                    <?= $user_info['first_name']. ' '. $user_info['last_name']?>
-                </label>
-                
-            </div>
-            <label for="img">upload</label>
-            <button type="submit" value="upload" name="submit" class="ml-3" onclick="loadFileProfile()">save upload</button>
-        </form>
+        <div class="flex justify-between relative">
+            <form action="../controllers/upload_profile.php" method="post" enctype="multipart/form-data" class="rounded-lg bg-slate-100 p-10 w-full h-1/3 top-10 left-5">
+                <input type="text" name="user_id" value="<?=$user_info['user_id']?>" hidden>
+                <div class="flex items-center space-x-6 mb-2">
+                    <input id="img" type="file" name="image" accept="image/gif, image/jpeg, image/png, image/jpg" hidden >
+                    <label class="relative" for="img" onclick="show_save()">                
+                        <img id="profilepic" class="h-20 w-20 object-cover rounded-full hover:cursor-pointer hover:border-4 hover:border-blue-500" src="/images/user/<?=$user_info['profile']?>" alt="Current profile photo" />
+                        <label for="img"><svg xmlns="http://www.w3.org/2000/svg" class="absolute cursor-pointer text-blue-400 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg></label>
+                    </label>
+                    <label class="block text-2xl font-bold text-slate-700">
+                        <?= $user_info['first_name']. ' '. $user_info['last_name']?>
+                    </label>
+                </div>
+                <button id="save_submit" type="submit" value="upload" name="submit" class="ml-10 text-white px-2 bg-blue-400 rounded-md" onchange="loadFileProfile()" style="display: none;">Change</button>
+            </form>
+            <a href="/views/edit_user_info.php" class="absolute bottom-0 right-1 text-blue-400 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class=" h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+            </a>
+        </div>
 
 
         <div class="flex py-4">
@@ -137,6 +143,21 @@
                         </div>
                     </div>
                 </div>
+                <div class="shadow bg-white w-full flex items-center border pl-2">
+                    <div class="flex items-center space-x-4 text-blue-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div class="flex-grow p-3">
+                        <div class="text-xs text-gray-500">
+                            date created account
+                        </div>
+                        <div class="font-semibold text-gray-700">
+                            <?= date("F jS, Y", strtotime($user_info['create_date'])) ?>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -149,6 +170,6 @@
     ?>
 
 <script src="js/main.js"></script>
-</body>
 <script src="js/like.js"></script>
-<script src="js/main.js"></script>
+</body>
+

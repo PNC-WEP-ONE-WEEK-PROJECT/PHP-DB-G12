@@ -2,6 +2,8 @@
 session_start();
 // require_once("../templates/header.php");
 require_once("../models/comment.php");
+if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
+
 
 ?>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -35,3 +37,9 @@ require_once("../models/comment.php");
     </div>
 </div>
 </div>
+
+<?php 
+    else:
+        header('location: /index.php');
+    endif;
+?>

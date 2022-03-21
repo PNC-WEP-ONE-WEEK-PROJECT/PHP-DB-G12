@@ -1,5 +1,6 @@
 <?php
     if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
+    $page = "home";
     // require_once('templates/header.php');
     require_once(realpath(dirname(__FILE__) . '/../templates/header.php'));
     require_once(realpath(dirname(__FILE__) . '/../models/post.php'));
@@ -164,5 +165,5 @@ endif;
 </body>
 
 
-<script src="js/like.js"></script>
-<script src="js/main.js"></script>
+<script src="/js/like.js"></script>
+<script src="/js/main.js"></script>

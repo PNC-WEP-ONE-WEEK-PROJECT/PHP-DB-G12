@@ -109,3 +109,8 @@ function showPassword() {
     x.type = "password";
   }
 }
+
+function show_save()
+{
+  document.getElementById('save_submit').style.display = "";
+}
