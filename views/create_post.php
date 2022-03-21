@@ -1,5 +1,6 @@
 <?php 
-    require_once('models/login_acc.php');
+    require_once(realpath(dirname(__FILE__) . '/../models/login_acc.php'));
+    // require_once('models/login_acc.php');
 ?>
 
 <script
@@ -19,11 +20,11 @@ crossorigin="anonymous"></script>
 ?>
 
 <!-- Get all data from database and display it -->
-<div id="create_page" class="mt-28 block m-auto w-2/5 rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3">
+<div id="create_page" class="mt-28 block m-auto w-3/6 rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3">
    <div class="header p-4 pb-0">
         <ul role="list" class="p-0 divide-y divide-slate-200">
             <li class="flex py-4 first:pt-0 last:pb-0">
-                <img class="object-cover h-12 w-12 rounded-full" src="images/teacher.jpg" alt="" width=""/>
+                <img class="object-cover h-12 w-12 rounded-full" src="images/<?=$name['profile'] ?>" alt="" width=""/>
                 <div class="open-create ml-6 p-3 bg-slate-100 rounded-full w-4/5 cursor-pointer">What on your mind?</div>
             </li>
             <li class="flex first:pt-0 last:pb-0 justify-around">
@@ -45,7 +46,7 @@ crossorigin="anonymous"></script>
         <h2 class="text-2xl pb-4 font-bold text-blue-400 text-center border-b">Create post</h2>
         <div class="w-full text-right flex justify-between">
             <li class="flex first:pt-0 last:pb-0 items-center">
-                 <img class="object-cover h-12 w-12 rounded-full" src="/images/teacher.jpg" alt="" width=""/>
+                 <img class="object-cover h-12 w-12 rounded-full" src="/images/<?=$name['profile'] ?>" alt="" width=""/>
                  <p class="ml-5 text-lg font-bold text-slate-900"><?= $firstN ." ". $lastN; ?></p>
              </li>
              <div class="p-1 absolute top-6 right-4 cursor-pointer rounded-full hover:bg-slate-300 hover:text-red-500">

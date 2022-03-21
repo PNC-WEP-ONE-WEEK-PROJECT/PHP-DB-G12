@@ -13,7 +13,12 @@ $gender = $_POST['gender'];
 $pwd = $_POST['password'];
 $password = password_hash($pwd,PASSWORD_DEFAULT);
 $create_date = date('Y-m-d');
+$profile = "/images/user/female.png";
 
-createAcc($first_name,$last_name,$phone,$email,$country,$date_of_birth,$gender,$password,$create_date);
+if($gender=="Male"){
+    $profile = "/user/male.png";
+}
+
+createAcc($first_name,$last_name,$phone,$email,$country,$date_of_birth,$gender,$password,$create_date,$profile);
 
 header('location: /index.php');

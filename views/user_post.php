@@ -1,10 +1,13 @@
 <?php
     if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
-    require_once('templates/header.php');
-    require_once('models/post.php');
-    require_once('models/like.php');
-    require_once('create_post.php');
-    require_once('models/comment.php');
+    require_once(realpath(dirname(__FILE__) . '/../models/post.php'));
+    require_once(realpath(dirname(__FILE__) . '/../models/like.php'));
+    require_once(realpath(dirname(__FILE__) . '/../models/login_acc.php'));
+    require_once(realpath(dirname(__FILE__) . '/../models/comment.php'));
+    // require_once('models/post.php');
+    // require_once('models/like.php');
+    // require_once('create_post.php');
+    // require_once('models/comment.php');
     // require_once('models/login_acc.php');
 
 ?>
@@ -21,7 +24,8 @@ crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <?php 
-$items = getItems();
+$items = getItemFromPUser($_SESSION['user_id']);
+$profile = getUserInfo($_SESSION['user_id']);
 foreach ($items as $item):
     ?>
 <body class="bg-slate-300">
@@ -29,15 +33,12 @@ foreach ($items as $item):
         <div class="header p-4 pb-0">
             <ul role="list" class="p-0 divide-y divide-slate-200">
                 <li class="flex py-4 first:pt-0 last:pb-0">
-                    <img class="object-cover h-14 w-14 rounded-full" src="/images/<?= $item['profile'] ?>" alt="" width=""/>
+                    <img class="object-cover h-14 w-14 rounded-full" src="/images/<?= $profile['profile'] ?>">
                     <div class="ml-3 overflow-hidden w-1/2">
-                        <p class="text-lg font-bold text-slate-900"><?= $item['username'] ?></p>
+                        <p class="text-lg font-bold text-slate-900"><?= $user_info['first_name']. ' '. $user_info['last_name']?></p>
                         <p class="text-sm text-slate-500 truncate"><?= date("F jS, Y", strtotime($item['post_date'])) ." at ". date("g:iA", strtotime($item['post_date'])); ?></p>
                     </div>
                     <div class="text-right w-1/2 relative">
-                        <?php
-                        if($item['user_id'] == $_SESSION['user_id']):
-                        ?>
                         <i onclick="" class="control-post fa fa-ellipsis-h cursor-pointer text-blue-400" style="font-size:25px"></i>
                         <div style="display: none;" class="post-control origin-top-right absolute right-0 mt-2 w-36 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                             <a href="views/edit_view.php?id= <?= $item['post_id']?>" class="hover:text-blue-400 text-center block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">
@@ -49,9 +50,6 @@ foreach ($items as $item):
                                 Delete Post
                             </a>
                         </div>
-                        <?php
-                        endif;
-                        ?>
                     </div>
                 </li>
             </ul>
@@ -101,7 +99,7 @@ foreach ($items as $item):
         </div>
         <div>
        <div class="flex">
-            <img class="object-cover h-10 w-10 rounded-full ml-4 mt-1.5" src="images/<?=$item['profile'] ?>" alt="" width="">
+            <img class="object-cover h-10 w-10 rounded-full ml-4 mt-1.5" src="images/teacher.jpg" alt="" width="">
             <form action="/controllers/create_comment.php" class="flex w-full" method="post">
                 <input type="hidden" value="<?=$item['post_id']?>" name="post_id">
                 <input type="text" placeholder="Add a comment" name="post_comment" class="w-4/5 p-2 rounded-md mb-4 ml-2 border-[1.5px] outline-none">
@@ -125,14 +123,8 @@ foreach ($items as $item):
                 </div>
                 <div>
                     <p class="text-sm text-slate-500 truncate"><?= date("F jS, Y", strtotime($comment['comment_date'])) ." at ". date("g:iA", strtotime($comment['comment_date'])); ?></p>
-                    <?php
-                    if ($comment['user_id'] == $_SESSION['user_id']):
-                    ?>
-                    <a href="views/edit_comment.php?id=<?=$comment['comment_id']?>" class="hover:underline hover:text-blue-500 cursor-pointer">Edit</a>                
-                    <a href="controllers/delete_comment.php?id=<?=$comment['comment_id']?>" class="hover:underline hover:text-blue-500 cursor-pointer">Delete</a>                
-                    <?php
-                    endif;
-                    ?>
+                    <span class="hover:underline hover:text-blue-500 cursor-pointer">Edit</span>
+                    <span class="hover:underline hover:text-blue-500 cursor-pointer">Delete</span>
                 </div>
 
             <?php
@@ -143,6 +135,7 @@ foreach ($items as $item):
     </div>
     </div>
     </div>
+
 <?php 
 endforeach;
 else:
@@ -154,3 +147,4 @@ endif;
 
 <script src="js/like.js"></script>
 <script src="js/main.js"></script>
+

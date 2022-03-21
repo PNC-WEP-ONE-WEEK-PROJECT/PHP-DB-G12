@@ -291,14 +291,10 @@
     </form>
 </div>
 
-<<<<<<< HEAD
-
-=======
 <?php 
 // else:
 // header('location: /index.php');
 // endif;
 
 ?>
->>>>>>> b0eab7daf19c28a36b9639991618bbe926d34ccd
 <script src="../js/main.js"></script>
