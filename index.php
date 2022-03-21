@@ -7,4 +7,3 @@ if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id']))
 }
 require_once $show;
 
-?>

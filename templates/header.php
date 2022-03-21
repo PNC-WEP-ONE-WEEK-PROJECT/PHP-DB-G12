@@ -1,11 +1,14 @@
 <?php
-require_once('models/login_acc.php');
+// require_once('../models/login_acc.php');
+require_once(realpath(dirname(__FILE__) . '/../models/login_acc.php'));
+
 ?>
 <?php 
  $name =  getUserInfo($_SESSION['user_id']);
  $firstN = $name['first_name'];
  $lastN =  $name['last_name'];
  $gender = $name['gender'];
+ $profile = $name['profile'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,21 +30,23 @@ require_once('models/login_acc.php');
             <img src="../images/logo.png" alt="logo" width="50px">
             <label class="relative block">
                 <span class="sr-only">Search</span>
-                <span class="absolute inset-y-0 left-0 flex items-center">
-                    <svg class="h-5 w-5 fill-slate-300" viewBox="0 0 20 20"><img src="../images/icon/search.svg" alt=""></svg>
+                <span class="absolute inset-y-0 left-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
                 </span>
                 <input class="placeholder:text-slate-400 block bg-white w-full border border-slate-300 ml-3  py-2 pl-9 pr-7 shadow-sm focus:outline-none rounded-full focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="Search Facebook" type="text" name="search"/>
             </label>
         </div>
         <div class="self-center flex items-center justify-center space-x-20 w-1/3">
-            <a href="#" class="text-center w-14 h-14 hover:bg-blue-400 bg-blue-500 text-blue-50 focus:text-blue-50 p-3 rounded-full"><i class="fa fa-home" style="font-size:30px"></i></a>
+            <a href="/" class="text-center w-14 h-14 hover:bg-blue-400 bg-blue-500 text-blue-50 focus:text-blue-50 p-3 rounded-full"><i class="fa fa-home" style="font-size:30px"></i></a>
             <a href="#" class="text-center w-14 h-14 hover:bg-blue-400 focus:bg-blue-500 focus:text-blue-50 p-3 rounded-full"><i class="mt-1 fa fa-users" style="font-size:25px"></i></a>
         </div>
         <div class="self-center flex w-1/3 justify-end mr-5">
             <div x-data="{ dropdownOpen: false }" class="relative">
                 <div @click="dropdownOpen = ! dropdownOpen" class="rounded-full pr-1 cursor-pointer flex items-center hover:bg-slate-200 duration-150 p-1 focus:bg-slate-200">
                     <button class="relative block h-10 w-10 rounded-full overflow-hidden shadow">
-                        <img class="h-full w-full object-cover" src="../images/<?php if($gender =='F'){echo 'female.jpg';}else {echo 'male.jpg'; } ?>" alt="Your avatar">
+                        <img class="h-full w-full object-cover" src="/images/user/<?=$name['profile'] ?>" alt="Your avatar">
                     </button>
                     <p class="ml-2 text-base font-bold text-slate-700"><?= $firstN ." ". $lastN; ?></p>
                 </div>
@@ -52,7 +57,7 @@ require_once('models/login_acc.php');
                 <div x-show="dropdownOpen"
                     class="absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10"
                     style="display: none;">
-                    <a href="#"
+                    <a href="/views/profile.php"
                         class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-400">Profile</a>
                     <a href="../controllers/logout.php"
                         class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-400">Logout</a>

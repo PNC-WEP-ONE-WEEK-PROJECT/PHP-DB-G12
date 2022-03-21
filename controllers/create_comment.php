@@ -10,7 +10,6 @@ $comment = $_POST['post_comment'];
 $comment_date = date('Y-m-d H:i:s');
 $user_id = $_SESSION['user_id'];
 $post_id = $_POST['post_id'];
-
 createCommentByPost($post_id, $comment, $user_id, $comment_date);
 
 header('location: /index.php');

@@ -5,6 +5,8 @@ var space_img = document.getElementById("image_space");
 let modal = document.getElementById("my-modal");
 let btn_post = document.getElementsByClassName("open-create");
 let button = document.getElementById("ok-btn");
+// let buttonupload = document.getElementById("upload");
+
 
 
 function hide(element){
