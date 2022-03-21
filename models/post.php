@@ -35,7 +35,7 @@ function deleteItem($id)
 function getItemFromPUser($user_id)
 {
     global $db;
-    $statement = $db->prepare("SELECT * FROM posts WHERE user_id = :user_id");
+    $statement = $db->prepare("SELECT * FROM posts WHERE user_id = :user_id ORDER BY post_id DESC;");
     $statement->execute([
         ':user_id' => $user_id
     ]);

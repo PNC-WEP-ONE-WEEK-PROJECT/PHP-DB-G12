@@ -46,7 +46,7 @@ window.onclick = function(event) {
   }
 
 function deleteImg(event){
-    if(event.target.id = "delete"){
+    if(event.target.className = "delete"){
         swal({
             title: "Are you sure?",
             text: "Do you really want to delete this photo?",

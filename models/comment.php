@@ -12,6 +12,15 @@ function getCommentsByPostId($post_id){
     return $statement->fetchAll();
 }
 
+function getNumberOfComments($post_id){
+    global $db;
+    $statement = $db->prepare("SELECT count(comments.post_id) as numberOfComments from comments where post_id=:id");
+    $statement -> execute([
+        ':id'=>$post_id
+    ]);
+    return $statement->fetch();
+}
+
 function getCommentById($id){
     global $db;
     $statement = $db -> prepare("SELECT * FROM users_comments where comment_id=:id");
