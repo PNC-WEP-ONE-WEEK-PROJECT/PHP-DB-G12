@@ -35,6 +35,9 @@ foreach ($items as $item):
                         <p class="text-sm text-slate-500 truncate"><?= date("F jS, Y", strtotime($item['post_date'])) ." at ". date("g:iA", strtotime($item['post_date'])); ?></p>
                     </div>
                     <div class="text-right w-1/2 relative">
+                        <?php
+                        if($item['user_id'] == $_SESSION['user_id']):
+                        ?>
                         <i onclick="" class="control-post fa fa-ellipsis-h cursor-pointer text-blue-400" style="font-size:25px"></i>
                         <div style="display: none;" class="post-control origin-top-right absolute right-0 mt-2 w-36 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                             <a href="views/edit_view.php?id= <?= $item['post_id']?>" class="hover:text-blue-400 text-center block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">
@@ -46,6 +49,9 @@ foreach ($items as $item):
                                 Delete Post
                             </a>
                         </div>
+                        <?php
+                        endif;
+                        ?>
                     </div>
                 </li>
             </ul>
@@ -115,8 +121,14 @@ foreach ($items as $item):
                 </div>
                 <div>
                     <p class="text-sm text-slate-500 truncate"><?= date("F jS, Y", strtotime($comment['comment_date'])) ." at ". date("g:iA", strtotime($comment['comment_date'])); ?></p>
+                    <?php
+                    if ($comment['user_id'] == $_SESSION['user_id']):
+                    ?>
                     <a href="views/edit_comment.php?id=<?=$comment['comment_id']?>" class="hover:underline hover:text-blue-500 cursor-pointer">Edit</a>                
                     <a href="controllers/delete_comment.php?id=<?=$comment['comment_id']?>" class="hover:underline hover:text-blue-500 cursor-pointer">Delete</a>                
+                    <?php
+                    endif;
+                    ?>
                 </div>
 
             <?php
@@ -127,7 +139,6 @@ foreach ($items as $item):
     </div>
     </div>
     </div>
-
 <?php 
 endforeach;
 else:
