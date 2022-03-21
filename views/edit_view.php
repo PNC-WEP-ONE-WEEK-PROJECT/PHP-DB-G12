@@ -3,6 +3,7 @@
 session_start();
 // require_once("../templates/header.php");
 require_once("../models/post.php");
+require_once("../models/login_acc.php");
 
 if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
 ?>
@@ -26,10 +27,15 @@ if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
                     </svg>
                 </a>
             </div>
+            <?php
+            $userInfo = getUserInfo($_SESSION['user_id']);
+            $firstN = $userInfo['first_name'];
+            $lastN =  $userInfo['last_name'];
+            ?>
             <h2 class="text-2xl pb-4 font-bold text-blue-400 text-center border-b">Edit post</h2>
             <li class="flex py-2 first:pt-0 last:pb-0 items-center">
-                <img class="object-cover h-12 w-12 rounded-full" src="/images/teacher.jpg" alt="" width=""/>
-                <p class="ml-5 text-lg font-bold text-slate-900">Rady Y</p>
+                <img class="object-cover h-12 w-12 rounded-full" src= "/images/<?= $userInfo['profile']?>" alt="" width=""/>
+                <p class="ml-5 text-lg font-bold text-slate-900"><?=$firstN.' '.$lastN?></p>
             </li>
             <input type="hidden" value="<?php echo $id ?>" name="id">
             <div id="" class="object-cover w-full h-72 scrolling-auto overflow-auto">
