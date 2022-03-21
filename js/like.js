@@ -25,10 +25,11 @@ function show_like(itemid)
                 post_id: itemid,
             },
             success: function(msg) {
-                // let show_like = document.getElementById('l'+itemid);
-                // $("body").load(location.href, 'show_like');
-                // $("#create_page").load(location.href);?
-                location.reload();
+                let show_like = document.getElementById('number'+itemid);
+                show_like.textContent = parseInt(show_like.textContent) + 1;
+                let tmp = "#" + itemid;
+                $(tmp).prop('disabled',true);
+                document.getElementById(itemid).classList.add("text-blue-400");
             },     
         });
     });

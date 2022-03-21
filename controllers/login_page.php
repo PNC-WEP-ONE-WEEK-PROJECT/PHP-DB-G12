@@ -19,8 +19,6 @@ echo "db_password . " . $db_password . "<br>";
 
 if(password_verify($input_password, $db_password)) {
     $_SESSION['user_id'] = $user_id;
-    // echo "session" . $_SESSION['login'];
-    echo $_SESSION['login'] ."<br>";
     echo "Password verified";
     header('location: /index.php');
     

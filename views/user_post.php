@@ -1,11 +1,13 @@
-
 <?php
     if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
-    require_once('templates/header.php');
-    require_once('models/post.php');
-    require_once('models/like.php');
-    require_once('create_post.php');
-    require_once('models/comment.php');
+    require_once(realpath(dirname(__FILE__) . '/../models/post.php'));
+    require_once(realpath(dirname(__FILE__) . '/../models/like.php'));
+    require_once(realpath(dirname(__FILE__) . '/../models/login_acc.php'));
+    require_once(realpath(dirname(__FILE__) . '/../models/comment.php'));
+    // require_once('models/post.php');
+    // require_once('models/like.php');
+    // require_once('create_post.php');
+    // require_once('models/comment.php');
     // require_once('models/login_acc.php');
 
 ?>
@@ -22,7 +24,8 @@ crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <?php 
-$items = getItems();
+$items = getItemFromPUser($_SESSION['user_id']);
+$profile = getUserInfo($_SESSION['user_id']);
 foreach ($items as $item):
     ?>
 <body class="bg-slate-300">
@@ -30,9 +33,9 @@ foreach ($items as $item):
         <div class="header p-4 pb-0">
             <ul role="list" class="p-0 divide-y divide-slate-200">
                 <li class="flex py-4 first:pt-0 last:pb-0">
-                    <img class="object-cover h-14 w-14 rounded-full" src="/images/<?= $item['profile'] ?>" alt="" width=""/>
+                    <img class="object-cover h-14 w-14 rounded-full" src="/images/<?= $profile['profile'] ?>">
                     <div class="ml-3 overflow-hidden w-1/2">
-                        <p class="text-lg font-bold text-slate-900"><?= $item['username'] ?></p>
+                        <p class="text-lg font-bold text-slate-900"><?= $user_info['first_name']. ' '. $user_info['last_name']?></p>
                         <p class="text-sm text-slate-500 truncate"><?= date("F jS, Y", strtotime($item['post_date'])) ." at ". date("g:iA", strtotime($item['post_date'])); ?></p>
                     </div>
                     <div class="text-right w-1/2 relative">

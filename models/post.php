@@ -32,6 +32,17 @@ function deleteItem($id)
     return ($statement->rowCount()==1);
 }
 
+function getItemFromPUser($user_id)
+{
+    global $db;
+    $statement = $db->prepare("SELECT * FROM posts WHERE user_id = :user_id");
+    $statement->execute([
+        ':user_id' => $user_id
+    ]);
+    $items = $statement->fetchAll();
+    return $items;
+}
+
 function getPicName($id) {
     global $db;
     $statement = $db->prepare("SELECT image FROM posts WHERE post_id= :id limit 1"); 
@@ -60,7 +71,8 @@ function getPostById($id)
     $statement->execute([
         ':id' => $id
     ]);
-    return $statement -> fetch();
+    $item = $statement -> fetch();
+    return $item;
 }
 /**
  * Update a Post given id and attibutes
@@ -84,10 +96,10 @@ function updatePost($id, $post_description, $post_image)
 }
 
 
-function createAcc($first_name, $last_name, $phone, $email, $country, $date_of_birth, $gender, $password,$create_date)
+function createAcc($first_name, $last_name, $phone, $email, $country, $date_of_birth, $gender, $password,$create_date, $profile)
 {
     global $db;
-    $statement = $db->prepare("INSERT INTO users (first_name,last_name,phone,email,country,date_of_birth,gender,password,create_date) VALUES (:first_name, :last_name, :phone_number, :email_address, :country, :date_of_birth, :gender, :password, :create_date) ");
+    $statement = $db->prepare("INSERT INTO users (first_name,last_name,phone,email,country,date_of_birth,gender,password,create_date,profile) VALUES (:first_name, :last_name, :phone_number, :email_address, :country, :date_of_birth, :gender, :password, :create_date,:profile) ");
     $statement->execute([
         ':first_name'=> $first_name,
         ':last_name'=> $last_name,
@@ -97,7 +109,8 @@ function createAcc($first_name, $last_name, $phone, $email, $country, $date_of_b
         ':date_of_birth'=>$date_of_birth,
         ':gender'=>$gender,
         ':password'=>$password,
-        ':create_date'=>$create_date
+        ':create_date'=>$create_date,
+        ':profile'=>$profile
     ]);
     return ($statement->rowCount() == 1);
 }
