@@ -118,7 +118,7 @@ foreach ($items as $item):
                         <img src="/images/user/<?=$comment['profile'] ?>" alt="" class="object-cover w-8 h-8 rounded-full ml-4 mr-2">
                     </div>
                     <div>
-                        <p class="rounded-lg bg-slate-300 p-1 w-15"><?= $comment['username']; echo "<br>"; echo $comment['comment'] ?></p>
+                        <p class="rounded-lg bg-slate-200 p-1 w-15"><?= $comment['username']; echo "<br>"; echo $comment['comment'] ?></p>
                     </div>
                 </div>
                 <div>

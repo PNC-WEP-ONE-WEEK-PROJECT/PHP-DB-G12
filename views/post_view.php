@@ -131,7 +131,7 @@ foreach ($items as $item):
                         <?php
                         $name = $comment['username'];
                         ?>
-                        <p class="rounded-lg bg-slate-300 p-1 w-2/3"> <?= "<b>$name</b>"; echo "<br>"; echo $comment['comment'] ?></p>
+                        <p class="rounded-lg bg-slate-200 p-1 w-2/3"> <?= "<b>$name</b>"; echo "<br>"; echo $comment['comment'] ?></p>
                     </div>
                 </div>
                 <div class="flex">
