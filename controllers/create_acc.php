@@ -1,3 +1,4 @@
+
 <?php
 require_once('../models/post.php');
 
@@ -14,6 +15,12 @@ $pwd = $_POST['password'];
 $password = password_hash($pwd,PASSWORD_DEFAULT);
 $create_date = date('Y-m-d');
 
-createAcc($first_name,$last_name,$phone,$email,$country,$date_of_birth,$gender,$password,$create_date);
+if(createAcc($first_name,$last_name,$phone,$email,$country,$date_of_birth,$gender,$password,$create_date)) {
 
-header('location: /index.php');
+    header('location: /index.php');
+}else {
+    echo "<script>alert('You cannot create account! Your email already have an account!! Please Try with other email address!!')</script> ";
+    header('location: /views/register.php');
+    
+}
+

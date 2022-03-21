@@ -65,6 +65,7 @@ function deleteImg(event){
           });
     }
 }
+
 let deleteImage = document.getElementById("delete");
 if(deleteImage != null){
     deleteImage.addEventListener("click", deleteImg);

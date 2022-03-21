@@ -10,7 +10,8 @@
 
 ?>
 <?php 
-//  $name =  getUserInfo($_SESSION['user_id']);
+ $name =  getUserInfo($_SESSION['user_id']);
+ $gender = $name['gender'];
 //  $firstN = $name['first_name'];
 //  $lastN =  $name['last_name'];
 
@@ -27,7 +28,11 @@ foreach ($items as $item):
         <div class="header p-4 pb-0">
             <ul role="list" class="p-0 divide-y divide-slate-200">
                 <li class="flex py-4 first:pt-0 last:pb-0">
-                    <img class="object-cover h-14 w-14 rounded-full" src="<?= $item['profile'] ?>" alt="" width=""/>
+                    <img class="object-cover h-14 w-14 rounded-full" src="../images/<?php
+                    if ($item['profile'] == null){
+                        if($gender == 'F'){echo 'female.jpg';}else {echo 'male.jpg'; }
+                    }else{$item['profile'];}
+                      ?>" alt="" width=""/>
                     <div class="ml-3 overflow-hidden w-1/2">
                         <p class="text-lg font-bold text-slate-900"><?= $item['username'] ?></p>
                         <p class="text-sm text-slate-500 truncate"><?= date("F jS, Y", strtotime($item['post_date'])) ." at ". date("g:iA", strtotime($item['post_date'])); ?></p>
@@ -54,7 +59,7 @@ foreach ($items as $item):
                 if($item['image']!=null){
                     ?>
             <div class="aspect-w-4 aspect-h-5 sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
-                <img src="<?= 'images/' .$item['image'] ?>" alt="" class="w-full h-full object-center object-cover">
+                <img src="<?= 'images/' .$item['image'] ?>" alt="" class="w-full h-full object-center object-cover p-1">
             </div>
             <?php 
                 }
@@ -88,6 +93,7 @@ foreach ($items as $item):
             </button>
         </div>
         <div>
+        <hr class="border-gray-200">
        <div class="flex">
             <img class="object-cover h-10 w-10 rounded-full ml-4 mt-1.5" src="images/teacher.jpg" alt="" width="">
             <form action="/controllers/create_comment.php" class="flex w-full" method="post">

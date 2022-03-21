@@ -5,6 +5,7 @@ require_once('models/login_acc.php');
  $name =  getUserInfo($_SESSION['user_id']);
  $firstN = $name['first_name'];
  $lastN =  $name['last_name'];
+ $gender = $name['gender'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +41,7 @@ require_once('models/login_acc.php');
             <div x-data="{ dropdownOpen: false }" class="relative">
                 <div @click="dropdownOpen = ! dropdownOpen" class="rounded-full pr-1 cursor-pointer flex items-center hover:bg-slate-200 duration-150 p-1 focus:bg-slate-200">
                     <button class="relative block h-10 w-10 rounded-full overflow-hidden shadow">
-                        <img class="h-full w-full object-cover" src="../images/teacher.jpg" alt="Your avatar">
+                        <img class="h-full w-full object-cover" src="../images/<?php if($gender =='F'){echo 'female.jpg';}else {echo 'male.jpg'; } ?>" alt="Your avatar">
                     </button>
                     <p class="ml-2 text-base font-bold text-slate-700"><?= $firstN ." ". $lastN; ?></p>
                 </div>
