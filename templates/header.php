@@ -38,7 +38,7 @@ require_once(realpath(dirname(__FILE__) . '/../models/login_acc.php'));
         </div>
         <div class="self-center flex items-center justify-center space-x-20 w-1/3">
             <a href="/" class="text-center w-14 h-14 hover:bg-blue-400 bg-blue-500 text-blue-50 focus:text-blue-50 p-3 rounded-full"><i class="fa fa-home" style="font-size:30px"></i></a>
-            <a href="#" class="text-center w-14 h-14 hover:bg-blue-400 focus:bg-blue-500 focus:text-blue-50 p-3 rounded-full"><i class="mt-1 fa fa-users" style="font-size:25px"></i></a>
+            <a href="/views/show_all_friend_add.php" class="text-center w-14 h-14 hover:bg-blue-400 focus:bg-blue-500 focus:text-blue-50 p-3 rounded-full"><i class="mt-1 fa fa-users" style="font-size:25px"></i></a>
         </div>
         <div class="self-center flex w-1/3 justify-end mr-5">
             <div x-data="{ dropdownOpen: false }" class="relative">

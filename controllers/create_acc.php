@@ -13,7 +13,7 @@ $gender = $_POST['gender'];
 $pwd = $_POST['password'];
 $password = password_hash($pwd,PASSWORD_DEFAULT);
 $create_date = date('Y-m-d');
-$profile = "/images/user/female.png";
+$profile = "/user/female.png";
 
 if($gender=="Male"){
     $profile = "/user/male.png";

@@ -1,10 +1,15 @@
 <?php
     if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
-    require_once('templates/header.php');
-    require_once('models/post.php');
-    require_once('models/like.php');
-    require_once('create_post.php');
-    require_once('models/comment.php');
+    // require_once('templates/header.php');
+    require_once(realpath(dirname(__FILE__) . '/../templates/header.php'));
+    require_once(realpath(dirname(__FILE__) . '/../models/post.php'));
+    require_once(realpath(dirname(__FILE__) . '/../models/like.php'));
+    require_once(realpath(dirname(__FILE__) . '/../views/create_post.php'));
+    require_once(realpath(dirname(__FILE__) . '/../models/comment.php'));
+    // require_once('models/post.php');
+    // require_once('models/like.php');
+    // require_once('create_post.php');
+    // require_once('models/comment.php');
     // require_once('models/login_acc.php');
 
 ?>
@@ -35,7 +40,7 @@ foreach ($items as $item):
                         <p class="text-sm text-slate-500 truncate"><?= date("F jS, Y", strtotime($item['post_date'])) ." at ". date("g:iA", strtotime($item['post_date'])); ?></p>
                     </div>
                     <div class="text-right w-1/2 relative">
-                        <i onclick="" class="control-post fa fa-ellipsis-h cursor-pointer text-blue-400" style="font-size:25px"></i>
+                        <i class="control-post fa fa-ellipsis-h cursor-pointer text-blue-400" style="font-size:25px;<?= ($item['user_id']!=$_SESSION['user_id'])? "display:none":""; ?>"></i>
                         <div style="display: none;" class="post-control origin-top-right absolute right-0 mt-2 w-36 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                             <a href="views/edit_view.php?id= <?= $item['post_id']?>" class="hover:text-blue-400 text-center block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">
                                 <i class="fa fa-edit" style="font-size:25px"></i>

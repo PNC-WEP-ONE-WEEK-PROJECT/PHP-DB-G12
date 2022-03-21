@@ -39,13 +39,13 @@ foreach ($items as $item):
                         <p class="text-sm text-slate-500 truncate"><?= date("F jS, Y", strtotime($item['post_date'])) ." at ". date("g:iA", strtotime($item['post_date'])); ?></p>
                     </div>
                     <div class="text-right w-1/2 relative">
-                        <i onclick="" class="control-post fa fa-ellipsis-h cursor-pointer text-blue-400" style="font-size:25px"></i>
+                        <i class="control-post fa fa-ellipsis-h cursor-pointer text-blue-400" style="font-size:25px"></i>
                         <div style="display: none;" class="post-control origin-top-right absolute right-0 mt-2 w-36 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                            <a href="views/edit_view.php?id= <?= $item['post_id']?>" class="hover:text-blue-400 text-center block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">
+                            <a href="/views/edit_view.php?id= <?= $item['post_id']?>" class="hover:text-blue-400 text-center block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">
                                 <i class="fa fa-edit" style="font-size:25px"></i>
                                 Edit Post
                             </a>
-                            <a href="controllers/delete_post.php?id=<?= $item['post_id']?>" onclick="return confirm('Are you sure to delete?')" class="hover:text-blue-400 text-center block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">
+                            <a href="/controllers/delete_post.php?id=<?= $item['post_id']?>" onclick="return confirm('Are you sure to delete?')" class="hover:text-blue-400 text-center block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">
                                 <i class="fa fa-trash-o" style="font-size:25px"></i>
                                 Delete Post
                             </a>
@@ -60,7 +60,7 @@ foreach ($items as $item):
                 if($item['image']!=null){
                     ?>
             <div class="aspect-w-4 aspect-h-5 sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
-                <img src="<?= 'images/' .$item['image'] ?>" alt="" class="w-full h-full object-center object-cover">
+                <img src="/images/<?=$item['image'] ?>" alt="" class="w-full h-full object-center object-cover">
             </div>
             <?php 
                 }
@@ -99,7 +99,7 @@ foreach ($items as $item):
         </div>
         <div>
        <div class="flex">
-            <img class="object-cover h-10 w-10 rounded-full ml-4 mt-1.5" src="images/teacher.jpg" alt="" width="">
+            <img class="object-cover h-10 w-10 rounded-full ml-4 mt-1.5" src="/images/<?=$profile['profile'] ?>" alt="" width="">
             <form action="/controllers/create_comment.php" class="flex w-full" method="post">
                 <input type="hidden" value="<?=$item['post_id']?>" name="post_id">
                 <input type="text" placeholder="Add a comment" name="post_comment" class="w-4/5 p-2 rounded-md mb-4 ml-2 border-[1.5px] outline-none">
@@ -145,6 +145,6 @@ endif;
 </body>
 
 
-<script src="js/like.js"></script>
-<script src="js/main.js"></script>
+<script src="../js/like.js"></script>
+<script src="../js/main.js"></script>
 

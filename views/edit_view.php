@@ -3,6 +3,7 @@
 session_start();
 // require_once("../templates/header.php");
 require_once("../models/post.php");
+require_once("../models/login_acc.php");
 
 if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
 ?>
@@ -13,6 +14,7 @@ if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
     <div class="p-3 z-50 fixed rounded shadow-2xl w-2/5 m-auto bg-white backdrop-blur-none">
         <?php
             // Get the id of the post needed to update
+            $profile = getUserInfo($_SESSION['user_id'])['profile']; 
             $id=$_GET['id'];
             // Get data from the database of the post
             $item = getPostById($id);
@@ -28,11 +30,11 @@ if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
             </div>
             <h2 class="text-2xl pb-4 font-bold text-blue-400 text-center border-b">Edit post</h2>
             <li class="flex py-2 first:pt-0 last:pb-0 items-center">
-                <img class="object-cover h-12 w-12 rounded-full" src="/images/teacher.jpg" alt="" width=""/>
+                <img class="object-cover h-12 w-12 rounded-full" src="/images/<?= $profile; ?>">
                 <p class="ml-5 text-lg font-bold text-slate-900">Rady Y</p>
             </li>
             <input type="hidden" value="<?php echo $id ?>" name="id">
-            <div id="" class="object-cover w-full h-72 scrolling-auto overflow-auto">
+            <div id="" class="object-cover w-full <?= $item['image']!=null?"h-72":"" ?> scrolling-auto overflow-auto">
                 <div class="-mt-1">
                     <textarea placeholder="What's on your mind?" class="w-full h-14 outline-none resize-none" name="post_description" rows="4"><?php echo $item['post_description'] ?></textarea>
                 </div>
@@ -43,7 +45,7 @@ if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
                 <div class="overscroll-contain w-full p-1">
                     <div class="relative flex justify-end">
                         <div class="bg-slate-200 p-3 absolute z-10">
-                            <svg xmlns="http://www.w3.org/2000/svg" id="delete" class="h-6 w-6 hover:text-red-700 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <svg xmlns="http://www.w3.org/2000/svg" onclick="deleteImg(event)" class="delete h-6 w-6 hover:text-red-700 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                             </svg>
                         </div>
