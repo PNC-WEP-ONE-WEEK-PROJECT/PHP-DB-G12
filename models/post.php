@@ -99,7 +99,7 @@ function updatePost($id, $post_description, $post_image)
 function createAcc($first_name, $last_name, $phone, $email, $country, $date_of_birth, $gender, $password,$create_date, $profile)
 {
     global $db;
-    $statement = $db->prepare("INSERT INTO users (first_name,last_name,phone,email,country,date_of_birth,gender,password,create_date,profile) SELECT * FROM (SELECT :first_name, :last_name, :phone_number, :email_address, :country, :date_of_birth, :gender, :password, :create_date, :profile) AS tmp WHERE NOT EXISTS (SELECT user_id FROM users WHERE email = :email_address)  ");
+    $statement = $db->prepare("INSERT INTO users (first_name,last_name,phone,email,country,date_of_birth,gender,password,create_date,profile) SELECT * FROM (SELECT :first_name, :last_name, :phone_number, :email_address, :country, :date_of_birth, :gender, :password, :create_date, :profile) AS tmp WHERE NOT EXISTS (SELECT user_id FROM users WHERE email = :email_address)");
     $statement->execute([
         ':first_name'=> $first_name,
         ':last_name'=> $last_name,

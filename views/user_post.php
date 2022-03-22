@@ -101,13 +101,21 @@ foreach ($items as $item):
         <div>
        <div class="flex">
             <img class="object-cover h-10 w-10 rounded-full ml-4 mt-1.5" src="/images/user/<?=$profile['profile'] ?>" alt="" width="">
-            <form action="/controllers/create_comment.php" class="flex w-full" method="post">
+            <form class="mt-1 flex w-full" action="" method="post">
                 <input type="hidden" value="<?=$item['post_id']?>" name="post_id">
-                <input type="text" placeholder="Add a comment" name="post_comment" class="w-4/5 p-2 rounded-md mb-4 ml-2 border-[1.5px] outline-none">
-                <button type="submit" name="comment" class="p-3 rounded-md mb-4 mx-2 border-2 text-white bg-blue-500" >Post</button>
+                <input type="text" onkeydown="javascript: return bannedSubmit(event)" autocomplete="off" placeholder="Add a comment" name="post_comment" id="comment<?=$item['post_id'] ?>" class="w-4/5 p-2 rounded-md mb-4 ml-2 border-[1.5px] outline-none" autocomplete="off">
+                <button onclick="addComment(<?= $item['post_id'];?>)" type="button" name="comment" class="rounded-md mb-4 w-1/5 h-12 mx-2 border-2 border-blue-500 text-blue-500 text-2xl text-center"><i class="fa fa-send-o"></i></button>
             </form>
         </div>
-        <div class="justify-center and items-center">
+       <!-- <div class="flex">
+            <img class="object-cover h-10 w-10 rounded-full ml-4 mt-1.5" src="/images/user/<?=$profile['profile'] ?>" alt="" width="">
+            <form action="/controllers/create_comment.php" class="mt-1 flex w-full" method="post">
+                <input type="hidden" value="<?=$item['post_id']?>" name="post_id">
+                <input type="text" placeholder="Add a comment" name="post_comment" class="w-4/5 p-2 rounded-md mb-4 ml-2 border-[1.5px] outline-none">
+                <button type="submit" name="comment" class="rounded-md mb-4 w-1/5 h-12 mx-2 border-2 border-blue-500 text-blue-500 text-2xl text-center"><i class="fa fa-send-o"></i></button>
+            </form>
+        </div> -->
+        <div class="-mt-4 ml-10 justify-center and items-center <?= getCommentsByPostId($item['post_id'])?"object-cover h-28 scrolling-auto overflow-auto overscroll-contain p-5":""; ?>">
             <?php
             $post_id = $item['post_id'];
             $comments=getCommentsByPostId($post_id);
@@ -134,6 +142,7 @@ foreach ($items as $item):
             ?>
        </div>
     </div>
+    <script src="../js/comment.js"></script>
     <script src="../js/like.js"></script>
     <script src="../js/main.js"></script>
     </div>

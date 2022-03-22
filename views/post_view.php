@@ -23,7 +23,7 @@ crossorigin="anonymous"></script>
 $items = getItems();
 foreach ($items as $item):
     ?>
-<body class="bg-slate-300">
+<body class="bg-slate-300 pb-10">
     <div id="<?="l". $item['post_id'] ?>" class="mt-5 block m-auto w-3/6 rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3">
         <div class="header p-4 pb-0">
             <ul role="list" class="p-0 divide-y divide-slate-200">
@@ -102,19 +102,31 @@ foreach ($items as $item):
         <hr class="border-gray-200">
        <div class="flex">
             <img class="object-cover h-10 w-10 rounded-full ml-4 mt-1.5" src="/images/user/<?=$name['profile'] ?>" alt="" width="">
-            <form action="/controllers/create_comment.php" class="flex w-full" method="post">
+            <form class="mt-1 flex w-full" action="" method="post">
+                <input type="hidden" value="<?=$item['post_id']?>" name="post_id">
+                <input type="text" onkeydown="javascript: return bannedSubmit(event)" autocomplete="off" placeholder="Add a comment" name="post_comment" id="comment<?=$item['post_id'] ?>" class="w-4/5 p-2 rounded-md mb-4 ml-2 border-[1.5px] outline-none" autocomplete="off">
+                <button onclick="addComment(<?= $item['post_id'];?>)" type="button" name="comment" class="rounded-md mb-4 w-1/5 h-12 mx-2 border-2 border-blue-500 text-blue-500 text-2xl text-center"><i class="fa fa-send-o"></i></button>
+            </form>
+            <!-- <form action="/controllers/create_comment.php" class="mt-1 flex w-full" method="post">
                 <input type="hidden" value="<?=$item['post_id']?>" name="post_id">
                 <input type="text" placeholder="Add a comment" name="post_comment" class="w-4/5 p-2 rounded-md mb-4 ml-2 border-[1.5px] outline-none">
-                <button type="submit" name="comment" class="p-3 rounded-md mb-4 mx-2 border-2 text-white bg-blue-500 w-1/5 text-lg" >Post</button>
-            </form>
+                <button type="submit" name="comment" class="rounded-md mb-4 w-1/5 h-12 mx-2 border-2 border-blue-500 text-blue-500 text-2xl text-center"><i class="fa fa-send-o"></i></button>
+            </form> -->
+            <!-- <form action="/controllers/create_comment.php" class="mt-1 flex w-full" method="post">
+                <input type="hidden" value="<?=$item['post_id']?>" name="post_id">
+                <input type="text" placeholder="Add a comment" name="post_comment" class="w-4/5 p-2 rounded-md mb-4 ml-2 border-[1.5px] outline-none">
+                <button type="submit" name="comment" class="rounded-md mb-4 w-1/5 h-12 mx-2 border-2 border-blue-500 text-blue-500 text-2xl text-center"><i class="fa fa-send-o"></i></button>
+            </form> -->
         </div>
-        <div class="-mt-4 ml-10">
-            <?php
+
+         
+        <div class="-mt-4 ml-10 <?= getCommentsByPostId($item['post_id'])?"object-cover h-28 scrolling-auto overflow-auto overscroll-contain p-5":""; ?>">
+        <?php
             $post_id = $item['post_id'];
             $comments=getCommentsByPostId($post_id);
             if($comments != null):
                 foreach($comments as $comment):
-            ?>
+                    ?>
                 <div class="flex justify-items-center mb-1 bg-white mt-4">
                     <div>
                         <img src="<?= 'images/user/'.$comment['profile'] ?>" alt="" class="object-cover w-8 h-8 rounded-full ml-4 mr-2">
@@ -149,7 +161,8 @@ foreach ($items as $item):
     </div>
     </div>
     <script src="/js/like.js"></script>
-    <script src="/js/main.js"></script>
+    <!-- <script src="/js/main.js"></script> -->
+    <script src="/js/comment.js"></script>
 <?php 
 endforeach;
 else:

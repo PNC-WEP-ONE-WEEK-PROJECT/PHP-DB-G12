@@ -73,9 +73,9 @@
         <button type="submit" name="submit" id="" class="m-auto p-2 bg-blue-600 rounded-md pl-16 pr-16 font-bold mt-3 text-white">Save</button>
     </form>
 </div>
+<script src="../js/main.js"></script>
 <?php
 else:
     header('location: /index.php');
 endif;
 ?>
-<script src="../js/main.js"></script>

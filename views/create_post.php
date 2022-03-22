@@ -81,6 +81,7 @@ crossorigin="anonymous"></script>
         </form>
     </div>
     </div>
+    <script src="../js/main.js"></script>
 </div>
 <?php 
 else:
