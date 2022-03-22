@@ -7,18 +7,10 @@
     require_once(realpath(dirname(__FILE__) . '/../models/like.php'));
     require_once(realpath(dirname(__FILE__) . '/../views/create_post.php'));
     require_once(realpath(dirname(__FILE__) . '/../models/comment.php'));
-    // require_once('models/post.php');
-    // require_once('models/like.php');
-    // require_once('create_post.php');
-    // require_once('models/comment.php');
-    // require_once('models/login_acc.php');
-
 ?>
 <?php 
  $name =  getUserInfo($_SESSION['user_id']);
  $gender = $name['gender'];
-//  $firstN = $name['first_name'];
-//  $lastN =  $name['last_name'];
 
 ?>
 <script
@@ -156,6 +148,8 @@ foreach ($items as $item):
     </div>
     </div>
     </div>
+    <script src="/js/like.js"></script>
+    <script src="/js/main.js"></script>
 <?php 
 endforeach;
 else:
@@ -163,7 +157,3 @@ header('location: /index.php');
 endif;
 ?>
 </body>
-
-
-<script src="/js/like.js"></script>
-<script src="/js/main.js"></script>

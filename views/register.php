@@ -7,8 +7,8 @@
     <h1 class="text-blue-500 text-center font-bold text-3xl">Sign Up</h1>
     <form action="../controllers/create_acc.php" method="post" class="mt-6">
         <div class="flex m-auto mb-4">
-            <input type="text" name="first-name" onkeyup="if (/[^|a-zA-Z0-9]+/g.test(this.value)) this.value = this.value.replace(/[^|a-zA-Z0-9]+/g,'')" placeholder="First name" class="w-full p-2 outline-none border-[1px] border-gray-300" required>
-            <input type="text" name="last-name" onkeyup="if (/[^|a-zA-Z0-9]+/g.test(this.value)) this.value = this.value.replace(/[^|a-zA-Z0-9]+/g,'')" placeholder="Last name" class="w-full ml-4 p-2 outline-none border-[1px] border-gray-300" required>
+            <input type="text" name="first-name" onkeyup="if (/[^|a-zA-Z0-9ក-អា-ោះ់-័្ឥ-ឧ-ោះ់ឧ-ឥ]+/g.test(this.value)) this.value = this.value.replace(/[^|a-zA-Z0-9ក-អា-ោះ់-័្ឥ-ឧ-ោះ់ឧ-ឥ]+/g,'')" placeholder="First name" class="w-full p-2 outline-none border-[1px] border-gray-300" required>
+            <input type="text" name="last-name" onkeyup="if (/[^|a-zA-Z0-9ក-អា-ោះ់-័្ឥ-ឧ-ោះ់ឧ-ឥ]+/g.test(this.value)) this.value = this.value.replace(/[^|a-zA-Z0-9ក-អា-ោះ់-័្ឥ-ឧ-ោះ់ឧ-ឥ]+/g,'')" placeholder="Last name" class="w-full ml-4 p-2 outline-none border-[1px] border-gray-300" required>
         </div>
         <input type="email" name="email" placeholder="Email address" onkeyup="if (/[^|a-zA-Z0-9@.]+/g.test(this.value)) this.value = this.value.replace(/[^|a-zA-Z0-9@.]+/g,'')" class="p-2 mb-4 w-full outline-none border-[1px] border-gray-300" required><br>
         <input type="tel" id="phone" name="phone"  minlength="8" maxlength="10" onkeyup="if (/[^|0-9]+/g.test(this.value)) this.value = this.value.replace(/[^|0-9]+/g,'')" placeholder="Phone" class="p-2 mb-4 w-full outline-none border-[1px] border-gray-300" required><br>

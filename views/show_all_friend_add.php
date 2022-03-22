@@ -39,7 +39,7 @@ crossorigin="anonymous"></script>
                     <img class="avatar w-20 h-20 rounded-full" src="/images/user/<?=$friendInfo['profile']?>">
                 </div>
                 <div class="user-body flex flex-col mb-4 sm:mb-0 sm:mr-4">
-                    <a href="#" class="title font-medium no-underline"><?=$friendInfo['first_name'] ?></a>
+                    <a href="#" class="title font-medium no-underline"><?=$friendInfo['first_name'] ?> <?=$friendInfo['last_name'] ?></a>
                     <div class="skills flex flex-col">
                         <span class="subtitle text-slate-500"><?=$friendInfo['email'] ?></span>
                     </div>

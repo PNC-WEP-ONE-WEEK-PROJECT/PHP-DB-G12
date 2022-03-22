@@ -12,11 +12,11 @@
 <body class="bg-slate-300 mt-28">
     <div class="rounded-lg mt-5 block m-auto w-3/5 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3">
         <div class="flex justify-between relative">
-            <form action="../controllers/upload_profile.php" method="post" enctype="multipart/form-data" class="rounded-lg bg-slate-100 p-10 w-full h-1/3 top-10 left-5">
+            <form onmouseover="hideBtn()" action="../controllers/upload_profile.php" method="post" enctype="multipart/form-data" class="rounded-lg bg-slate-100 p-10 w-full h-1/3 top-10 left-5">
                 <input type="text" name="user_id" value="<?=$user_info['user_id']?>" hidden>
                 <div class="flex items-center space-x-6 mb-2">
                     <input id="img" type="file" name="image" accept="image/gif, image/jpeg, image/png, image/jpg" hidden >
-                    <label class="relative" for="img" onclick="show_save()">                
+                    <label class="relative" for="img" onclick="showSave()">                
                         <img id="profilepic" class="h-20 w-20 object-cover rounded-full hover:cursor-pointer hover:border-4 hover:border-blue-500" src="/images/user/<?=$user_info['profile']?>" alt="Current profile photo" />
                         <label for="img"><svg xmlns="http://www.w3.org/2000/svg" class="absolute cursor-pointer text-blue-400 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
@@ -162,6 +162,8 @@
         </div>
     </div>
     </div>
+    <script src="/js/main.js"></script>
+    <script src="/js/like.js"></script>
     <?php 
         require_once(realpath(dirname(__FILE__) . '/../views/user_post.php'));
     else:
@@ -169,7 +171,5 @@
     endif;
     ?>
 
-<script src="js/main.js"></script>
-<script src="js/like.js"></script>
 </body>
 

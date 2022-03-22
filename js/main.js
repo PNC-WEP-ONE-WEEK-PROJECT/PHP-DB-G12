@@ -110,7 +110,15 @@ function showPassword() {
   }
 }
 
-function show_save()
+function showSave()
 {
   document.getElementById('save_submit').style.display = "";
+}
+
+let btnSaveImg = document.getElementById("img");
+function hideBtn()
+{
+  if(btnSaveImg.value==''){
+    document.getElementById('save_submit').style.display = "none";
+  }
 }

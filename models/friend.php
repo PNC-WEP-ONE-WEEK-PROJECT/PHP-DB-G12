@@ -26,6 +26,7 @@ function show_user($user_id)
 function addFriend($user_id, $friend_id)
 {
     global $db;
+    addFriend៌៌៌៌_Nrow($user_id, $friend_id);
     $statement = $db->prepare("INSERT INTO friends (user_id, friend_id) SELECT * FROM (SELECT :user_id, :friend_id) AS tmp WHERE NOT EXISTS (SELECT user_id FROM friends WHERE user_id = :user_id AND friend_id = :friend_id) LIMIT 1;");
     $statement->execute([
         ':user_id' => $user_id,
@@ -34,9 +35,22 @@ function addFriend($user_id, $friend_id)
     return ($statement->rowCount() == 1);
 }
 
+function addFriend៌៌៌៌_Nrow($user_id, $friend_id)
+{
+    global $db;
+    $statement = $db->prepare("INSERT INTO friends (user_id, friend_id) SELECT * FROM (SELECT :friend_id, :user_id) AS tmp WHERE NOT EXISTS (SELECT user_id FROM friends WHERE user_id = :friend_id  AND friend_id =:user_id) LIMIT 1;");
+    $statement->execute([
+        ':user_id' => $user_id,
+        ':friend_id' => $friend_id
+    ]);
+    return ($statement->rowCount() == 1);
+}
+
+
+
 function seeOwnFriend($user_id){
     global $db;
-    $statement = $db->prepare("SELECT friend_id FROM friends WHERE user_id = :user_id;");
+    $statement = $db->prepare("SELECT friend_id FROM friends where user_id=:user_id order by friend_id desc;");
     $statement->execute([
         ':user_id'=> $user_id
     ]);
@@ -57,12 +71,12 @@ function notFriends($user_id){
 function unFriend($user_id, $friend_id)
 {
     global $db;
-    $statement = $db->prepare("DELETE FROM friends WHERE user_id = :user_id AND friend_id = :friend_id;");
+    $statement = $db->prepare("DELETE FROM friends WHERE (user_id = :user_id AND friend_id=:friend_id) OR (user_id = :friend_id AND friend_id=:user_id);");
     $statement->execute([
         ':user_id' => $user_id,
         ':friend_id' => $friend_id
     ]);
-    return ($statement->rowCount() == 1);
+    return ($statement->rowCount() == 2);
 }
 
 ?>
