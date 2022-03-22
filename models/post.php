@@ -127,6 +127,18 @@ function uploadProfile($profile_img, $user_id)
     return ($statement->rowCount() == 1);
 }
 
+//UPDATE USER COVER
+function uploadCover($cover_img, $user_id)
+{
+    global $db;
+    $statement = $db->prepare("UPDATE users SET cover=:cover_img WHERE user_id=:id");
+    $statement->execute([
+        ':cover_img'=> $cover_img,
+        ':id'=>$user_id
+    ]);
+    return ($statement->rowCount() == 1);
+}
+
 // UPDATE USER INFORMATION
 function updateUserInfo($first_name, $last_name, $phone, $email, $country, $date_of_birth, $gender,$user_id){
     global $db;

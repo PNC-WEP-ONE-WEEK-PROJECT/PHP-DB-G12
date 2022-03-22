@@ -1,7 +1,6 @@
 
 <?php
 session_start();
-// require_once("../templates/header.php");
 require_once("../models/post.php");
 require_once("../models/login_acc.php");
 

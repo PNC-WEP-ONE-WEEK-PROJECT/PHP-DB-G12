@@ -26,7 +26,6 @@ crossorigin="anonymous"></script>
     </div>
     <div class='user-list w-full mt-6 max-w-lg mx-auto bg-white rounded shadow-xl flex flex-col py-4'>
         <?php 
-            // $users = show_user($_SESSION['user_id']);
             $users_id = seeOwnFriend($_SESSION['user_id']);
             foreach($users_id as $user_id):
                 $friend =  $user_id['friend_id'];

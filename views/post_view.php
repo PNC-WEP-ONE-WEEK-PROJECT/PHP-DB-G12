@@ -1,7 +1,6 @@
 <?php
     if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
     $page = "home";
-    // require_once('templates/header.php');
     require_once(realpath(dirname(__FILE__) . '/../templates/header.php'));
     require_once(realpath(dirname(__FILE__) . '/../models/post.php'));
     require_once(realpath(dirname(__FILE__) . '/../models/like.php'));
@@ -45,9 +44,6 @@ foreach ($items as $item):
                                 Delete Post
                             </a>
                         </div>
-                        <?php
-                        // endif;
-                        ?>
                     </div>
                 </li>
             </ul>

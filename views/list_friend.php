@@ -55,7 +55,6 @@ crossorigin="anonymous"></script>
         </div>
         <!--User row -->
         <?php 
-        // endif;
     endforeach;
     ?>
     <a class="show-more block w-10/12 mx-auto py-2.5 px-4 text-center no-underline rounded hover:bg-[#f6f8f9] font-medium duration-300" href="#/">Show more users</a>

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2022 at 03:56 PM
+-- Generation Time: Mar 22, 2022 at 02:53 PM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,8 +40,7 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`comment_id`, `comment`, `comment_date`, `post_id`, `user_id`) VALUES
-(27, 'Hi b nga', '2022-03-21 15:57:44', 98, 29),
-(28, 'Hi b nga', '2022-03-21 20:41:29', 97, 32);
+(30, 'Cute', '2022-03-22 10:22:04', 102, 34);
 
 -- --------------------------------------------------------
 
@@ -60,7 +59,12 @@ CREATE TABLE `friends` (
 --
 
 INSERT INTO `friends` (`id_friend`, `user_id`, `friend_id`) VALUES
-(43, 32, 29);
+(45, 35, 34),
+(46, 34, 35),
+(47, 35, 36),
+(48, 36, 35),
+(49, 34, 36),
+(50, 36, 34);
 
 -- --------------------------------------------------------
 
@@ -80,13 +84,8 @@ CREATE TABLE `likes` (
 --
 
 INSERT INTO `likes` (`like_id`, `like_status`, `post_id`, `user_id`) VALUES
-(424, 1, 96, 30),
-(425, 1, 97, 30),
-(426, 1, 98, 30),
-(429, 1, 98, 29),
-(430, 1, 97, 29),
-(431, 1, 96, 29),
-(432, 1, 98, 32);
+(434, 1, 102, 34),
+(435, 1, 103, 35);
 
 -- --------------------------------------------------------
 
@@ -108,11 +107,8 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`post_id`, `title`, `post_description`, `image`, `post_date`, `user_id`) VALUES
-(96, NULL, 'Mengyi', NULL, '2022-03-21 09:34:39', 29),
-(97, NULL, 'No money no everything 🤔', NULL, '2022-03-21 10:40:10', 30),
-(98, NULL, '', NULL, '2022-03-21 10:43:02', 30),
-(99, NULL, '', 'IMG-62383e78eaecf0.98072172.png', '2022-03-21 15:59:36', 29),
-(100, NULL, 'Nga', NULL, '2022-03-21 16:55:29', 32);
+(102, NULL, 'hi', 'IMG-62394019b47133.72229510.png', '2022-03-22 10:18:49', 35),
+(103, NULL, 'Don\'t think alots', 'IMG-623940c6baef82.35545935.jpg', '2022-03-22 10:21:42', 34);
 
 -- --------------------------------------------------------
 
@@ -131,17 +127,18 @@ CREATE TABLE `users` (
   `gender` char(1) DEFAULT NULL,
   `password` varchar(200) DEFAULT NULL,
   `create_date` date DEFAULT NULL,
-  `profile` varchar(50) DEFAULT NULL
+  `profile` varchar(50) DEFAULT NULL,
+  `cover` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `phone`, `email`, `country`, `date_of_birth`, `gender`, `password`, `create_date`, `profile`) VALUES
-(29, 'Mengyi', 'Yoeng', '0883029295', 'mengyi.yoeng34@gmail.com', 'Cambodia', '2022-03-04', 'M', '$2y$10$35bZ4GjiFJwsyUrf3L1V6uOzqALdCBnY3wNf7BtWZ82IKHMxS9do6', '2022-03-21', '/user/male.png'),
-(30, 'Theavy', 'No', '2222222222', 'hel@gmail.com', 'Cambodia', '2022-03-02', 'M', '$2y$10$SpwMYvq0QORaJ6Z34qcKqe7OTaWR6YULzbOHblCopZL/q10fHSO3G', '2022-03-21', '/user/male.png'),
-(32, 'NgA', 'Lala', '0883029295', 'w@gmail.com', 'Anguilla', '2022-03-10', 'F', '$2y$10$uC3Tpn1Xic17YfcE46oHcuHFZM9whtI2xgXYXpZvKsTD1n.Ovw4RG', '2022-03-21', '/user/female.png');
+INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `phone`, `email`, `country`, `date_of_birth`, `gender`, `password`, `create_date`, `profile`, `cover`) VALUES
+(34, 'Avy', 'IU', '0889708156', 'avy@gmail.com', 'Cambodia', '2003-04-05', 'F', '$2y$10$y54OK98QYNukUvGasWEbAOwJvb3h0uVT83s0Ry9L0dACxfp.FF2Re', '2022-03-22', 'IMG-62393ed669e074.23807450.png', NULL),
+(35, 'Theavy', 'PK', '0964743586', 'AvyGaming2003@gmail.com', 'Argentina', '2022-03-09', 'F', '$2y$10$GHSSEXEDDk61J0Ay0JIQrekj8Ri8SzswF35dSn0c0SPUXmLTCZTZG', '2022-03-22', 'IMG-6239409d3eb873.37073656.jpg', NULL),
+(36, 'vy', 'lovely', '0889708156', 'vylonely123@gmail.com', 'China', '2003-04-05', 'F', '$2y$10$Ogr/ekTM1gE511l/.NbJUeo/F1k1Dpn6mgfA0Lbgse.sJJNsGK5Ny', '2022-03-22', 'IMG-6239d1b09283e2.77106713.jpg', 'IMG-6239d194c0d6a8.31347029.jpg');
 
 -- --------------------------------------------------------
 
@@ -249,31 +246,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `friends`
 --
 ALTER TABLE `friends`
-  MODIFY `id_friend` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_friend` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=433;
+  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=436;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Constraints for dumped tables

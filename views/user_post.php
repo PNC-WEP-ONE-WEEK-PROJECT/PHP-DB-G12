@@ -4,19 +4,8 @@
     require_once(realpath(dirname(__FILE__) . '/../models/like.php'));
     require_once(realpath(dirname(__FILE__) . '/../models/login_acc.php'));
     require_once(realpath(dirname(__FILE__) . '/../models/comment.php'));
-    // require_once('models/post.php');
-    // require_once('models/like.php');
-    // require_once('create_post.php');
-    // require_once('models/comment.php');
-    // require_once('models/login_acc.php');
-
 ?>
-<?php 
-//  $name =  getUserInfo($_SESSION['user_id']);
-//  $firstN = $name['first_name'];
-//  $lastN =  $name['last_name'];
 
-?>
 <script
 src="https://code.jquery.com/jquery-3.6.0.min.js"
 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="

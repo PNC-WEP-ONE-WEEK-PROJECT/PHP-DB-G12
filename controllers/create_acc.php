@@ -28,6 +28,3 @@ if(createAcc($first_name,$last_name,$phone,$email,$country,$date_of_birth,$gende
 
 }
 
-// createAcc($first_name,$last_name,$phone,$email,$country,$date_of_birth,$gender,$password,$create_date,$profile);
-// header('location: /index.php');
-
