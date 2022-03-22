@@ -1,6 +1,4 @@
-<?php
-    // if (isset($_SESSION['login']) and !empty($_SESSION['login'])):
-?>
+
 <script src="https://cdn.tailwindcss.com"></script>
 <body class="bg-gray-300">
 <div class="max-w-md m-auto bg-gray-200 p-6 mt-10 rounded-md pt-6 pb-10 mb-6 text-center">

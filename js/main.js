@@ -83,6 +83,18 @@ var loadFile = function(event) {
   image.src = URL.createObjectURL(event.target.files[0]);
 };
 
+// LOADFILE PROFILE
+var img_profile = document.getElementById('uprofile');
+var loadProfile = function(event) {
+  img_profile.src = URL.createObjectURL(event.target.files[0]);
+};
+
+// LOADFILE COVER
+var img_cover = document.getElementById('cover_img');
+var loadCover = function(event) {
+  img_cover.src = URL.createObjectURL(event.target.files[0]);
+};
+
 // clear post form file
 let input_img = document.getElementById("upload-image");
 let post_content = document.getElementById("post_content");

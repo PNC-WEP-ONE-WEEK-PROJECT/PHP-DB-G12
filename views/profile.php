@@ -10,25 +10,22 @@
     $user_info = getUserInfo($_SESSION['user_id']);
 ?>
 <body class="bg-slate-300 mt-28">
-    <div class="rounded-lg mt-5 block m-auto w-3/5 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3">
-        <div class="flex justify-between relative">
-            <form onmouseover="hideBtn()" action="../controllers/upload_profile.php" method="post" enctype="multipart/form-data" class="rounded-lg bg-slate-100 p-10 w-full h-1/3 top-10 left-5">
-                <input type="text" name="user_id" value="<?=$user_info['user_id']?>" hidden>
-                <div class="flex items-center space-x-6 mb-2">
-                    <input id="img" type="file" name="image" accept="image/gif, image/jpeg, image/png, image/jpg" hidden >
+    <div class="rounded-lg block m-auto w-3/5 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3">
+        <div class="block justify-between relative">
+            <div class="min-w-full min-h-[50vh] h-1/3 bg-center bg-no-repeat bg-fixed bg-cover" style="background-image: url('/images/cover/<?=$user_info['cover']?>')" alt="cover">
+                <!-- <img src="/images/cover/IMG-623a007db67ef3.00400586.jpg" alt=""> -->
+            </div>
+            <div class="items-center rounded-lg p-10">
+                <div class="block items-center absolute bottom-20 left-[44%]">
                     <label class="relative" for="img" onclick="showSave()">                
                         <img id="profilepic" class="h-20 w-20 object-cover rounded-full hover:cursor-pointer hover:border-4 hover:border-blue-500" src="/images/user/<?=$user_info['profile']?>" alt="Current profile photo" />
-                        <label for="img"><svg xmlns="http://www.w3.org/2000/svg" class="absolute cursor-pointer text-blue-400 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg></label>
-                    </label>
-                    <label class="block text-2xl font-bold text-slate-700">
-                        <?= $user_info['first_name']. ' '. $user_info['last_name']?>
+                        <label for="img"></label>
                     </label>
                 </div>
-                <button id="save_submit" type="submit" value="upload" name="submit" class="ml-10 text-white px-2 bg-blue-400 rounded-md" onchange="loadFileProfile()" style="display: none;">Change</button>
-            </form>
+                <div class="w-full text-center text-2xl font-bold text-slate-700">
+                    <?= $user_info['first_name']. ' '. $user_info['last_name']?>
+                </div>
+            </div>
             <a href="/views/edit_user_info.php" class="absolute bottom-0 right-1 text-blue-400 cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" class=" h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -37,7 +34,7 @@
         </div>
 
 
-        <div class="flex py-4">
+        <div class="flex py-4 pb-10">
         <div class="px-10 mx-auto container">
             <div class="grid grid-cols-2 gap-2">
                 <div class="shadow bg-white w-full flex items-center border pl-2">

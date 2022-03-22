@@ -1,6 +1,5 @@
 <?php 
     require_once(realpath(dirname(__FILE__) . '/../models/login_acc.php'));
-    // require_once('models/login_acc.php');
 ?>
 
 <script
@@ -15,7 +14,6 @@ crossorigin="anonymous"></script>
 ?>
 
 <?php
-// require_once('../models/create.php');
     if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
 ?>
 

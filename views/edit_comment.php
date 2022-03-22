@@ -1,6 +1,5 @@
 <?php
 session_start();
-// require_once("../templates/header.php");
 require_once("../models/comment.php");
 if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
 

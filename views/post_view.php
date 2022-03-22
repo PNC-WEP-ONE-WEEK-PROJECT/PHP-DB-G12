@@ -1,7 +1,6 @@
 <?php
     if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
     $page = "home";
-    // require_once('templates/header.php');
     require_once(realpath(dirname(__FILE__) . '/../templates/header.php'));
     require_once(realpath(dirname(__FILE__) . '/../models/post.php'));
     require_once(realpath(dirname(__FILE__) . '/../models/like.php'));
@@ -45,9 +44,6 @@ foreach ($items as $item):
                                 Delete Post
                             </a>
                         </div>
-                        <?php
-                        // endif;
-                        ?>
                     </div>
                 </li>
             </ul>
@@ -107,16 +103,6 @@ foreach ($items as $item):
                 <input type="text" onkeydown="javascript: return bannedSubmit(event)" autocomplete="off" placeholder="Add a comment" name="post_comment" id="comment<?=$item['post_id'] ?>" class="w-4/5 p-2 rounded-md mb-4 ml-2 border-[1.5px] outline-none" autocomplete="off">
                 <button onclick="addComment(<?= $item['post_id'];?>)" type="button" name="comment" class="rounded-md mb-4 w-1/5 h-12 mx-2 border-2 border-blue-500 text-blue-500 text-2xl text-center"><i class="fa fa-send-o"></i></button>
             </form>
-            <!-- <form action="/controllers/create_comment.php" class="mt-1 flex w-full" method="post">
-                <input type="hidden" value="<?=$item['post_id']?>" name="post_id">
-                <input type="text" placeholder="Add a comment" name="post_comment" class="w-4/5 p-2 rounded-md mb-4 ml-2 border-[1.5px] outline-none">
-                <button type="submit" name="comment" class="rounded-md mb-4 w-1/5 h-12 mx-2 border-2 border-blue-500 text-blue-500 text-2xl text-center"><i class="fa fa-send-o"></i></button>
-            </form> -->
-            <!-- <form action="/controllers/create_comment.php" class="mt-1 flex w-full" method="post">
-                <input type="hidden" value="<?=$item['post_id']?>" name="post_id">
-                <input type="text" placeholder="Add a comment" name="post_comment" class="w-4/5 p-2 rounded-md mb-4 ml-2 border-[1.5px] outline-none">
-                <button type="submit" name="comment" class="rounded-md mb-4 w-1/5 h-12 mx-2 border-2 border-blue-500 text-blue-500 text-2xl text-center"><i class="fa fa-send-o"></i></button>
-            </form> -->
         </div>
 
          
