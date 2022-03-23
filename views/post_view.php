@@ -90,7 +90,7 @@ foreach ($items as $item):
         </div>
         <div>
        <div class="flex">
-            <img class="object-cover h-10 w-10 rounded-full ml-4 mt-1.5" src="/images/user/<?=$profile['profile'] ?>" alt="" width="">
+            <img class="object-cover h-10 w-10 rounded-full ml-4 mt-1.5" src="/images/user/<?=getUserInfo($_SESSION['user_id'])['profile'] ?>" alt="" width="">
             <form class="mt-1 flex w-full" action="" method="post">
                 <input type="hidden" value="<?=$item['post_id']?>" name="post_id">
                 <input type="text" onkeydown="javascript: return bannedSubmit(event)" autocomplete="off" placeholder="Add a comment" name="post_comment" id="comment<?=$item['post_id'] ?>" class="w-4/5 p-2 rounded-md mb-4 ml-2 border-[1.5px] outline-none" autocomplete="off">
@@ -114,8 +114,14 @@ foreach ($items as $item):
                 </div>
                 <div>
                     <p class="text-sm text-slate-500 truncate"><?= date("F jS, Y", strtotime($comment['comment_date'])) ." at ". date("g:iA", strtotime($comment['comment_date'])); ?></p>
+                    <?php
+                        if($comment['user_id']==$_SESSION['user_id']){
+                    ?>
                     <a href="/views/edit_comment.php?id=<?=$comment['comment_id']?>" class="hover:underline hover:text-blue-500 cursor-pointer hover:bg-blue-200 hover:rounded-xl hover:px-1.5 mr-2">Edit</a>                
-                    <a href="/controllers/delete_comment.php?id=<?=$comment['comment_id']?>" class="hover:underline hover:text-blue-500 cursor-pointer hover:bg-blue-200 hover:rounded-xl hover:px-1.5 mr-2">Delete</a>                
+                    <a href="/controllers/delete_comment.php?id=<?=$comment['comment_id']?>" class="hover:underline hover:text-blue-500 cursor-pointer hover:bg-blue-200 hover:rounded-xl hover:px-1.5 mr-2">Delete</a>  
+                    <?php 
+                        }
+                    ?>              
                 </div>
 
             <?php

@@ -71,7 +71,7 @@ if (isset($_SESSION['user_id']) and !empty($_SESSION['user_id'])):
             }
         ?>
     </div>
-    <!-- <script src="../js/main.js"></script> -->
+    <script src="../js/main.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </div>
 <?php 
