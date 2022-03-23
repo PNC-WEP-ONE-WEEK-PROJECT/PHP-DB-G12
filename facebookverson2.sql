@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2022 at 02:53 PM
+-- Generation Time: Mar 23, 2022 at 09:42 AM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,7 +40,45 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`comment_id`, `comment`, `comment_date`, `post_id`, `user_id`) VALUES
-(30, 'Cute', '2022-03-22 10:22:04', 102, 34);
+(115, 'no', '2022-03-23 12:33:43', 128, 44),
+(116, 'hello', '2022-03-23 12:37:07', 129, 44),
+(117, 'hi', '2022-03-23 12:37:55', 129, 44),
+(118, 'hello', '2022-03-23 12:38:03', 130, 44),
+(119, 'what is the problem here!', '2022-03-23 12:38:22', 130, 44),
+(120, 'no', '2022-03-23 12:39:23', 130, 44),
+(121, 'hi', '2022-03-23 12:39:30', 131, 44),
+(122, 'what is the problem?', '2022-03-23 12:39:43', 131, 44),
+(123, 'ssssssssssss', '2022-03-23 12:40:40', 132, 44),
+(124, 'hh', '2022-03-23 12:41:32', 132, 44),
+(125, 'sdfdsfsdfds', '2022-03-23 12:43:34', 132, 44),
+(126, 'sdfsdfsdfsdfsd', '2022-03-23 12:43:40', 132, 44),
+(127, 'sdfsdfsdfsdfa', '2022-03-23 12:43:53', 132, 44),
+(128, 'sdfsdfsdfsf', '2022-03-23 12:43:56', 132, 44),
+(129, 'sdfsdfsfs', '2022-03-23 12:43:58', 132, 44),
+(130, 'dfsdfsdfsdfsdfsf', '2022-03-23 12:44:00', 132, 44),
+(131, 'sdfs', '2022-03-23 12:44:01', 132, 44),
+(132, 'sdfsdfsd', '2022-03-23 12:44:03', 132, 44),
+(133, 'sdfsdfsdfdsfs', '2022-03-23 12:44:03', 132, 44),
+(134, 'sdfsdfsdfdsfsdf', '2022-03-23 12:44:03', 132, 44),
+(135, 'hi', '2022-03-23 15:09:09', 129, 44),
+(136, 'no', '2022-03-23 15:09:29', 132, 44),
+(137, 'yes', '2022-03-23 15:09:33', 132, 44),
+(138, 'haha', '2022-03-23 15:09:42', 129, 44),
+(139, 'ASDFGHJ', '2022-03-23 15:12:14', 130, 44),
+(140, 'asdfghjk', '2022-03-23 15:12:21', 128, 44),
+(141, 'dfghm,', '2022-03-23 15:12:27', 129, 44),
+(142, 'hi', '2022-03-23 15:16:10', 129, 44),
+(143, 'sdfdsf', '2022-03-23 15:17:44', 128, 44),
+(144, 'sdfsdf', '2022-03-23 15:17:50', 129, 44),
+(145, 'hi', '2022-03-23 15:20:19', 132, 43),
+(146, 'hi', '2022-03-23 15:20:55', 133, 43),
+(147, 'dsfas', '2022-03-23 15:21:08', 129, 43),
+(148, 'dhjfhdfj', '2022-03-23 15:21:59', 133, 44),
+(149, 'ddfdfd', '2022-03-23 15:22:12', 133, 44),
+(150, 'sdf', '2022-03-23 15:22:21', 128, 44),
+(151, 'dfdfd', '2022-03-23 15:23:01', 133, 44),
+(152, 'sdfsdf', '2022-03-23 15:23:18', 130, 44),
+(154, 'dd', '2022-03-23 15:40:12', 133, 44);
 
 -- --------------------------------------------------------
 
@@ -59,12 +97,8 @@ CREATE TABLE `friends` (
 --
 
 INSERT INTO `friends` (`id_friend`, `user_id`, `friend_id`) VALUES
-(45, 35, 34),
-(46, 34, 35),
-(47, 35, 36),
-(48, 36, 35),
-(49, 34, 36),
-(50, 36, 34);
+(59, 43, 44),
+(60, 44, 43);
 
 -- --------------------------------------------------------
 
@@ -84,8 +118,12 @@ CREATE TABLE `likes` (
 --
 
 INSERT INTO `likes` (`like_id`, `like_status`, `post_id`, `user_id`) VALUES
-(434, 1, 102, 34),
-(435, 1, 103, 35);
+(460, 1, 131, 44),
+(461, 1, 130, 44),
+(462, 1, 129, 44),
+(463, 1, 128, 44),
+(464, 1, 132, 44),
+(466, 1, 133, 46);
 
 -- --------------------------------------------------------
 
@@ -107,8 +145,12 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`post_id`, `title`, `post_description`, `image`, `post_date`, `user_id`) VALUES
-(102, NULL, 'hi', 'IMG-62394019b47133.72229510.png', '2022-03-22 10:18:49', 35),
-(103, NULL, 'Don\'t think alots', 'IMG-623940c6baef82.35545935.jpg', '2022-03-22 10:21:42', 34);
+(128, NULL, 'hi', NULL, '2022-03-23 12:33:35', 44),
+(129, NULL, 'hi', NULL, '2022-03-23 12:35:37', 44),
+(130, NULL, 'NO problem\r\n', NULL, '2022-03-23 12:35:48', 44),
+(131, NULL, '\r\nThat\'s fine for me', 'IMG-623ab1cc1d31d7.83108411.png', '2022-03-23 12:36:12', 44),
+(132, NULL, 'wdfgh', NULL, '2022-03-23 12:40:33', 44),
+(133, NULL, '', 'IMG-623ad85dc2a9c2.84749837.jpg', '2022-03-23 15:20:45', 43);
 
 -- --------------------------------------------------------
 
@@ -136,9 +178,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `phone`, `email`, `country`, `date_of_birth`, `gender`, `password`, `create_date`, `profile`, `cover`) VALUES
-(34, 'Avy', 'IU', '0889708156', 'avy@gmail.com', 'Cambodia', '2003-04-05', 'F', '$2y$10$y54OK98QYNukUvGasWEbAOwJvb3h0uVT83s0Ry9L0dACxfp.FF2Re', '2022-03-22', 'IMG-62393ed669e074.23807450.png', NULL),
-(35, 'Theavy', 'PK', '0964743586', 'AvyGaming2003@gmail.com', 'Argentina', '2022-03-09', 'F', '$2y$10$GHSSEXEDDk61J0Ay0JIQrekj8Ri8SzswF35dSn0c0SPUXmLTCZTZG', '2022-03-22', 'IMG-6239409d3eb873.37073656.jpg', NULL),
-(36, 'vy', 'lovely', '0889708156', 'vylonely123@gmail.com', 'China', '2003-04-05', 'F', '$2y$10$Ogr/ekTM1gE511l/.NbJUeo/F1k1Dpn6mgfA0Lbgse.sJJNsGK5Ny', '2022-03-22', 'IMG-6239d1b09283e2.77106713.jpg', 'IMG-6239d194c0d6a8.31347029.jpg');
+(43, 'Avy', 'PK', '0889708156', 'avypk@gmail.com', 'Australia', '2022-03-02', 'F', '$2y$10$KWzHdQNuo0x35TJEZfM09OJiD856v94o09Gj3ijx1pE8O/MdWEQnu', '2022-03-23', 'IMG-623ad8e05a0352.95541581.jpg', 'IMG-623ad8e058f7c1.75505973.jpg'),
+(44, 'Mengyi', 'Yoeng', '0883029295', 'mengyi.yoeng34@gmail.com', 'Bahrain', '2004-06-23', 'M', '$2y$10$c6Mtdw3Tt67Lxn4mQVdaVeUtbDEjTVlNuJoNvHKXDk09UKwd9qRgi', '2022-03-23', 'IMG-623ad9feb18181.96446252.jpg', 'IMG-623ab0fc8837b5.26222005.png'),
+(45, 'Avy', 'Crazy', '0889708156', 'crazy@gmail.com', 'Austria', '2022-03-08', 'F', '$2y$10$SWPCEdfRHxLGAoPXenLws.hZZFtlpEsvlYjKqWJwk6b72UsVM97uu', '2022-03-23', 'female.png', NULL),
+(46, 'kon', 'Pa', '0883029294', 'c@gmail.com', 'Bangladesh', '2022-03-18', 'M', '$2y$10$rYAs8yxu6yQRV95D1/4R6eLjyh89q6fIW0Hy5xw71.TnaQYKfrzRS', '2022-03-23', 'male.png', NULL);
 
 -- --------------------------------------------------------
 
@@ -246,31 +289,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 
 --
 -- AUTO_INCREMENT for table `friends`
 --
 ALTER TABLE `friends`
-  MODIFY `id_friend` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id_friend` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=436;
+  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=467;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- Constraints for dumped tables

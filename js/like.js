@@ -3,7 +3,7 @@ function send_like(itemid)
 {
         $(document).ready(function() {
         $.ajax({
-            url: 'controllers/user_like.php',
+            url: '/controllers/user_like.php',
             type: 'POST',
             data: {
                 post_id: itemid,
@@ -19,7 +19,7 @@ function show_like(itemid)
 {
         $(document).ready(function() {
         $.ajax({
-            url: 'controllers/show_like.php',
+            url: '/controllers/show_like.php',
             type: 'POST',
             data: {
                 post_id: itemid,

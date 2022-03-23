@@ -2,7 +2,7 @@
 // Hide element
 var post_control = document.getElementsByClassName("post-control");
 var space_img = document.getElementById("image_space");
-let modal = document.getElementById("my-modal");
+let modal_form = document.getElementById("my-modal");
 let btn_post = document.getElementsByClassName("open-create");
 let button = document.getElementById("ok-btn");
 // let buttonupload = document.getElementById("upload");
@@ -19,16 +19,16 @@ function show(element){
 // We want the modal to open when the Open button is clicked
 if(btn_post.length > 0){
   btn_post[0].onclick = function() {
-    modal.style.display = "block";
+    modal_form.style.display = "block";
   }
   btn_post[1].onclick = function() {
-    modal.style.display = "block";
+    modal_form.style.display = "block";
   }
 }
 // We want the modal to close when the OK button is clicked
 function close_create() {
   clear_form();
-  modal.style.display = "none";
+  modal_form.style.display = "none";
 }
 
 

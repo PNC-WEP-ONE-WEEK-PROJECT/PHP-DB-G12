@@ -12,7 +12,7 @@ function addComment(itemid)
                 post_comment: comment
             },
             success: function(msg) {
-                 $("body").load(location.href);
+                $("body").load(location.href);
             }               
         });
     });

@@ -13,7 +13,7 @@
     <div class="rounded-lg block m-auto w-3/5 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3">
         <div class="block justify-between relative">
             <div class="min-w-full min-h-[50vh] h-1/3 bg-center bg-no-repeat bg-fixed bg-cover" style="background-image: url('/images/cover/<?=$user_info['cover']?>')" alt="cover">
-                <!-- <img src="/images/cover/IMG-623a007db67ef3.00400586.jpg" alt=""> -->
+
             </div>
             <div class="items-center rounded-lg p-10">
                 <div class="block items-center absolute bottom-20 left-[44%]">

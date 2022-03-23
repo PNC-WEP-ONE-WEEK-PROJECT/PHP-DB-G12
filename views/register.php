@@ -1,3 +1,10 @@
+<?php
+// session_start();
+$pathUrl = parse_url($_SERVER['REQUEST_URI']);
+$pathUrl['path'] === "/views/register.php" ? session_start() : null;
+isset($_SESSION['user_id']) ? header('Location: ../index.php') : null ;
+
+?>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <body class="bg-gray-300">

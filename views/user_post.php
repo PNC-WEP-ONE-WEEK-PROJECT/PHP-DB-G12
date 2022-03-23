@@ -123,12 +123,11 @@ foreach ($items as $item):
             ?>
        </div>
     </div>
-    <!-- <script src="/js/main.js"></script> -->
+    </div>
+    </div>
     <script src="../js/comment.js"></script>
     <script src="../js/like.js"></script>
-    </div>
-    </div>
-
+    <script src="../js/main.js"></script>
 <?php 
 endforeach;
 else:
